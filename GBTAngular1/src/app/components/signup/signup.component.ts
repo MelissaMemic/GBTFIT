@@ -1,5 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -12,7 +14,7 @@ export class SignupComponent implements OnInit{
   eyeIcon: string="fa-eye-slash";
   signUpForm!:FormGroup;
 
-    constructor(private sf:FormBuilder){
+    constructor(private sf:FormBuilder,private auth: AuthService,private router: Router){
   
   }
   ngOnInit(): void {
@@ -30,9 +32,19 @@ export class SignupComponent implements OnInit{
   this.isText ? this.eyeIcon="fa-eye":this.eyeIcon="fa-eye-slash";
   this.isText ? this.type="text":this.type="password";
   }
-  onSubmit(){
+  onSignUp(){
     if(this.signUpForm.valid){
-//send obj to DB
+      this.auth.signUp(this.signUpForm.valid).subscribe({
+        next:(res)=>{
+          alert("Successfuly signed up ");
+          this.signUpForm.reset();
+          this.router.navigate(['dashboard']);
+        },
+        error:(err)=>{
+          alert("Access Denied for signup");
+        }
+      })
+
     }else{
 //throw error
   this.validateAllFormFields(this.signUpForm);
