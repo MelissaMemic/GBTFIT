@@ -31,8 +31,8 @@
 
                             </div>
 
-                            <div class="form-inline fr">
-                                <a id="forget" routerLink="" class="font-weight-bold">Forget Password?</a>
+                            <div class="form-inline fr mt-4">
+                                <a id="forget" data-toggle="modal" data-target="#exampleModal" class="font-weight-bold">Forget Password?</a>
                             </div>
                             <button (click)="onLogin()" type="submit" class="btn btn-primary btn-block mt-4 w-12">Login </button>
                             <div class="text-center pt-4 text-muted">Don't have an account yet? <a id="forget" routerLink="/signUp">Sign Up</a></div>
@@ -48,3 +48,34 @@
 
     </div>
 </div>
+
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Forgot your password?</h5>
+          <small>Please enter your email address, so you can recieve a reset link.</small>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group p-3">
+                <div class="input-field" >
+                    <span class="fa fa-user p-2"></span>
+                    <input [(ngModel)]="resetPasswordEmail" (ngModelChange)="checkValidEmail($event)" type="text" placeholder="Email">
+                </div>
+                <small *ngIf="!resetPasswordEmail" class="text-danger">*Username is required*</small> 
+             <small *ngIf="!isValidEmail && resetPasswordEmail" class="text-danger">*Username is invalid*</small>
+
+                <!-- <small *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required','username')" class="text-danger">*Username is required</small> -->
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button id="closeBtn" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" (click)="confirmToSend()" class="btn btn-primary">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>

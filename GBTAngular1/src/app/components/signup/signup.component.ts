@@ -1,6 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -14,7 +15,11 @@ export class SignupComponent implements OnInit{
   eyeIcon: string="fa-eye-slash";
   signUpForm!:FormGroup;
 
-    constructor(private sf:FormBuilder,private auth: AuthService,private router: Router){
+    constructor(
+      private sf:FormBuilder,
+      private auth: AuthService,
+      private router: Router,
+      private toast:NgToastService){
   
   }
   ngOnInit(): void {
@@ -36,17 +41,16 @@ export class SignupComponent implements OnInit{
     if(this.signUpForm.valid){
       this.auth.signUp(this.signUpForm.valid).subscribe({
         next:(res)=>{
-          alert("Successfuly signed up ");
           this.signUpForm.reset();
+          this.toast.success({detail:"SUCCESS", summary:res.message, duration:5000});
           this.router.navigate(['dashboard']);
         },
         error:(err)=>{
-          alert("Access Denied for signup");
+          this.toast.error({detail:"ERROR", summary:"Something went wrong!", duration:5000});
         }
       })
 
     }else{
-//throw error
   this.validateAllFormFields(this.signUpForm);
     }
   }
