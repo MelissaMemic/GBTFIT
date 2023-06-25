@@ -7,7 +7,7 @@ import { TokenApiModel } from '../models/token-api.model';
   providedIn: 'root'
 })
 export class AuthService {
-private baseUrl:string="https://localhost:7183/api/User/";
+private baseUrl:string="https://localhost:7219/Autentification/";
   constructor(private http : HttpClient ,private router: Router) { }
 
 signUp(signUpObject:any){
@@ -20,7 +20,7 @@ storeRefreshToken(tokenValue:string){
 }
 
 login(loginObj:any){
-  return this.http.post<any>(`${this.baseUrl}authenticate`,loginObj); 
+  return this.http.post<any>(`${this.baseUrl}Login`,loginObj); 
 }
 signOut(){
   localStorage.clear();
