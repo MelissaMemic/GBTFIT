@@ -1,0 +1,43 @@
+<div class="reservation-container">
+    <form>
+      <h2>Rezervacija vozne karte</h2>
+      
+      <div class="background-image"></div>
+  
+      <div class="form-group">
+        <label for="departure-date">Datum polaska:</label>
+        <input type="text" id="departure-date" [(ngModel)]="departureDate" disabled>
+      </div>
+  
+      <div class="form-group">
+        <label for="departure-time">Vrijeme polaska:</label>
+        <input type="text" id="departure-time" [(ngModel)]="departureTime" disabled>
+      </div>
+  
+      <div class="form-group">
+        <label for="departure-location">Mjesto polaska:</label>
+        <input type="text" id="departure-location" [(ngModel)]="departureLocation" disabled>
+      </div>
+  
+      <div class="form-group">
+        <label for="destination">Destinacija:</label>
+        <input type="text" id="destination" [(ngModel)]="destination" disabled>
+      </div>
+  
+      <div class="form-group">
+        <label for="seat-number">Broj sjedišta:</label>
+        <input type="text" id="seat-number" [(ngModel)]="seatNumber" disabled>
+      </div>
+  
+      <div class="form-group">
+        <label for="passenger-name">Ime i prezime putnika:</label>
+        <input type="text" id="passenger-name" [(ngModel)]="passengerName" disabled>
+      </div>
+  
+      <div class="form-group">
+        <label for="class">Klasa vožnje:</label>
+        <input type="text" id="class" [(ngModel)]="class" disabled>
+      </div>
+    </form>
+  </div>
+  
