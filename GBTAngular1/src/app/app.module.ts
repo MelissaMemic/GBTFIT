@@ -11,6 +11,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NgToastModule } from 'ng-angular-popup';
 import { TokenInterceptor } from './components/interceptors/token.interceptor';
 import { ResetComponent } from './components/reset/reset.component';
+import { ReservationViewComponent } from './reservation-view/reservation-view.component';
+import { DestinationComponent } from './destination/destination.component';
+import { PaymentOptionsComponent } from './payment-options/payment-options.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { ResetComponent } from './components/reset/reset.component';
     LoginComponent,
     SignupComponent,
     DashboardComponent,
-    ResetComponent
+    ResetComponent,
+    ReservationViewComponent,
+    DestinationComponent,
+    PaymentOptionsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,294 @@
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+
+<!-- HTML code -->
+<!-- <form class="payment-form" (ngSubmit)="submitForm()">
+    <h2 class="form-title">Način plaćanja</h2>
+  
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="radio" id="cash" name="paymentMethod" value="cash" [(ngModel)]="selectedPaymentMethod">
+        <label class="form-check-label" for="cash">
+          <i class="fas fa-money-bill-wave"></i>
+          Plaćanje gotovinom
+        </label>
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="radio" id="card" name="paymentMethod" value="card" [(ngModel)]="selectedPaymentMethod">
+        <label class="form-check-label" for="card">
+          <i class="fas fa-credit-card"></i>
+          Plaćanje karticom
+        </label>
+      </div>
+    </div>
+  
+    <button type="submit" class="btn btn-primary">Dalje</button>
+  </form>
+  
+   -->
+
+<div class="outer">
+  <!-- <button (click)="logOut()" class="btn btn-danger" >Log Out</button> -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Get By Train</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Info</a>
+        </li>
+        
+      </ul>
+    </div>
+  </nav>
+  
+  <div class="container">
+    <h1>Ticket Booking</h1>
+
+    <!-- Progress Bar -->
+    <div class="progress">
+      <div class="progress-bar" [style.width]="getProgressWidth()"></div>
+    </div>
+
+    <!-- Step 1: Select Start and End Destinations -->
+    <div *ngIf="currentStep === 1">
+      <h4>Step 1: Select Destinations</h4>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="startDestinationDropdown"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+{{       selectedDestinations.start? selectedDestinations.start:     'Select Start Destination'}}
+            </button>
+            <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div> -->
+            <div class="dropdown-menu" aria-labelledby="startDestinationDropdown">
+              <a class="dropdown-item" href="#" (click)="selectStartDestination($event, 'Destination1')">Destination 1</a>
+              <a class="dropdown-item" href="#" (click)="selectStartDestination($event, 'Destination2')">Destination 2</a>
+              <a class="dropdown-item" href="#" (click)="selectStartDestination($event, 'Destination3')">Destination 3</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="endDestinationDropdown"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{       selectedDestinations.end? selectedDestinations.end:     'Select End Destination'}}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="endDestinationDropdown">
+              <a class="dropdown-item" href="#" (click)="selectEndDestination($event, 'Destination1')">Destination 1</a>
+              <a class="dropdown-item" href="#" (click)="selectEndDestination($event, 'Destination2')">Destination 2</a>
+              <a class="dropdown-item" href="#" (click)="selectEndDestination($event, 'Destination3')">Destination 3</a>
+            </div>
+            <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="departureDate">Date of Departure:</label>
+            <input class="form-control" type="datetime-local" id="departureDate" [(ngModel)]="selectedDepartureDate">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group" *ngIf="!isOneWay">
+            <label for="returnDate">Return Date:</label>
+            <input class="form-control" type="datetime-local" id="returnDate" [(ngModel)]="selectedReturnDate">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="oneWay" [(ngModel)]="isOneWay">
+        <label class="form-check-label" for="oneWay">One Way</label>
+      </div>
+
+      <button class="btn btn-primary" (click)="searchOptions()">Search</button>
+
+      <!-- Popup List of Ticket Options -->
+      <div *ngIf="ticketOptions.length > 0" class="ticket-options">
+        <h4>Available Ticket Options:</h4>
+        <ul>
+          <li *ngFor="let option of ticketOptions">{{ option }}</li>
+        </ul>
+        <table class="table">
+          <caption>List of users</caption>
+          <thead>
+            <tr>
+              <th scope="col">SLIKA kompanije</th>
+              <th scope="col">First</th>
+              <th scope="col">Last</th>
+              <th scope="col">
+                <button class="btn btn-primary">Book</button>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor="let option of ticketOptions">
+              <td> <img src="../components/login/GBT.png" class="img-fluid img-thumbnail" alt="Sheep"></td>
+              <td>{{option.dateOfDeparture}}</td>
+              <td>{{option.dateOfFinish}}</td>
+              <td><button class="btn btn-primary" onclick="AddDepartureTicket(option.id)">Book</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <button class="btn btn-primary" style="margin-left: 94%;" (click)="nextStep()" [disabled]="!areDestinationsSelected()">Next</button>
+    </div>
+
+    <!-- Step 2: Select Class and Seat Number -->
+    <div *ngIf="currentStep === 2">
+      <h2>Step 2: Select Class and Seat Number</h2>
+      <!-- Place your form controls for class and seat selection here -->
+      <button class="btn btn-primary" (click)="nextStep()" [disabled]="!isClassAndSeatSelected()">Next</button>
+    </div>
+
+    <!-- Step 3: Payment Options -->
+    <div *ngIf="currentStep === 3">
+      <h2>Step 3: Payment Options</h2>
+      <!-- Place your form controls for payment options here -->
+      <div class="form-group">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" id="cash" name="paymentMethod" value="cash" [(ngModel)]="selectedPaymentMethod">
+          <label class="form-check-label" for="cash">
+            <i class="fas fa-money-bill-wave"></i>
+            Plaćanje gotovinom
+          </label>
+        </div>
+      
+  
+        <div class="form-check">
+          <input class="form-check-input" type="radio" id="card" name="paymentMethod" value="card" [(ngModel)]="selectedPaymentMethod">
+          <label class="form-check-label" for="card">
+            <i class="fas fa-credit-card"></i>
+            Plaćanje karticom
+          </label>
+        </div>
+      </div>
+      <button class="btn btn-primary" (click)="nextStep()" [disabled]="!isPaymentOptionSelected()">Next</button>
+    </div>
+
+    <!-- Step 4: Finish Booking -->
+    <div *ngIf="currentStep === 4">
+      <h2>Step 4: Finish Booking</h2>
+      <p>Summary of Booking:</p>
+      <p>Start Destination: {{ selectedDestinations.start }}</p>
+      <p>End Destination: {{ selectedDestinations.end }}</p>
+      <p>Date of Departure: {{ selectedDepartureDate }}</p>
+      <p *ngIf="!isOneWay">Return Date: {{ selectedReturnDate }}</p>
+      <p>Class: {{ selectedClass }}</p>
+      <p>Seat: {{ selectedSeat }}</p>
+      <p>Payment Option: {{ selectedPaymentOption }}</p>
+      <button class="btn btn-success" (click)="finishBooking()">Finish Booking</button>
+    </div>
+  </div>
+
+
+</div>
+
+<!-- 
+<div class="container">
+  <h1>Ticket Booking</h1>
+
+  <div class="progress">
+    <div class="progress-bar" [style.width]="getProgressWidth()"></div>
+  </div>
+
+  <div *ngIf="currentStep === 1">
+    <h2>Step 1: Select Destinations</h2>
+    <label for="startDestination">Start Destination:</label>
+    <select class="form-control" id="startDestination" [(ngModel)]="selectedDestinations.start" multiple>
+      <option value="destination1">Destination 1</option>
+      <option value="destination2">Destination 2</option>
+      <option value="destination3">Destination 3</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="endDestination">End Destination:</label>
+    <select class="form-control" id="endDestination" [(ngModel)]="selectedDestinations.end" multiple>
+      <option value="destination1">Destination 1</option>
+      <option value="destination2">Destination 2</option>
+      <option value="destination3">Destination 3</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="departureDate">Date of Departure:</label>
+    <input class="form-control" type="datetime-local" id="departureDate" [(ngModel)]="selectedDepartureDate">
+  </div>
+  <div class="form-group">
+    <label for="returnDate">Return Date:</label>
+    <input class="form-control" type="datetime-local" id="returnDate" [(ngModel)]="selectedReturnDate">
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" id="oneWay" [(ngModel)]="isOneWay">
+    <label class="form-check-label" for="oneWay">One Way</label>
+  </div>
+  <button class="btn btn-primary" (click)="searchOptions()">Search</button>
+  <div *ngIf="ticketOptions.length > 0" class="ticket-options">
+    <h4>Available Ticket Options:</h4>
+    <ul>
+      <li *ngFor="let option of ticketOptions">{{ option }}</li>
+    </ul>
+  </div>
+
+
+  <button class="btn btn-primary" (click)="nextStep()" [disabled]="!areDestinationsSelected()">Next</button>
+</div>
+
+<div *ngIf="currentStep === 2">
+  <h2>Step 2: Select Class and Seat Number</h2>
+  <button class="btn btn-primary" (click)="nextStep()" [disabled]="!isClassAndSeatSelected()">Next</button>
+</div>
+
+<div *ngIf="currentStep === 3">
+  <h2>Step 3: Payment Options</h2>
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="radio" id="cash" name="paymentMethod" value="cash"
+        [(ngModel)]="selectedPaymentMethod">
+      <label class="form-check-label" for="cash">
+        <i class="fas fa-money-bill-wave"></i>
+        Plaćanje gotovinom
+      </label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="radio" id="card" name="paymentMethod" value="card"
+        [(ngModel)]="selectedPaymentMethod">
+      <label class="form-check-label" for="card">
+        <i class="fas fa-credit-card"></i>
+        Plaćanje karticom
+      </label>
+    </div>
+  </div>
+  <button class="btn btn-primary" (click)="nextStep()" [disabled]="!isPaymentOptionSelected()">Next</button>
+</div>
+
+<div *ngIf="currentStep === 4">
+  <h2>Step 4: Booking Summary</h2>
+  <button class="btn btn-primary" (click)="finishBooking()">Finish Booking</button>
+</div>
+</div> -->

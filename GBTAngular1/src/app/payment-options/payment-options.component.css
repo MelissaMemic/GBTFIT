@@ -1,0 +1,52 @@
+/* CSS styling */
+.outer {
+    
+    background-color: #104aa2;
+    margin: 0;
+  padding: 0;
+  
+  background-size: 100%;
+  background-position: center;
+  background-repeat:no-repeat;
+  height: 100vh;
+  }
+  
+  .form-title {
+    color: #007bff;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  input[type="radio"] {
+    margin-right: 10px;
+  }
+  
+  label {
+    color: #333;
+  }
+  
+  .submit-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
+  .navbar-expand {
+    background-color: rgb(34, 34, 181);
+  }
+  h1 {
+    text-align: center;
+    margin: 0 auto;
+  }
+  
