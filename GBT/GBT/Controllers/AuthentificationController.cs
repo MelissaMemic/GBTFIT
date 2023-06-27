@@ -45,7 +45,6 @@ namespace GBT.Controllers
             var password = CheckPasswordStrength(x.Password);
             if (!string.IsNullOrEmpty(password))
                 return BadRequest(new { Message = password.ToString() });
-
             else
             {
                 korisnik = new Korisnik()

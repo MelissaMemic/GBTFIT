@@ -2,10 +2,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace GBT.Models
 {
-    public class Korisnik
+    public class Korisnik:BaseEntity
     {
-    [Key]
-    public int ID { get; set; }
     public string Ime { get; set; }
     public string Prezime { get; set; }
     public string Username { get; set; }

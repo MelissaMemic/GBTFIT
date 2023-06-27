@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GBT.Models
 {
-    public class Grad
+    public class Grad:BaseEntity
     {
-        [Key]
-        public int ID { get; set; }
+
+
         public string Naziv { get; set; }
         public string PostanskiBroj { get; set; }
 

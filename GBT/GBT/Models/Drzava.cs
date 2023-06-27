@@ -2,10 +2,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace GBT.Models
 {
-    public class Drzava
+    public class Drzava:BaseEntity
     {
-        [Key]
-        public int ID { get; set; }
+        
         public string Naziv { get; set; }
     }
 }
