@@ -1,6 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GBT.Models
 {
@@ -8,7 +6,7 @@ namespace GBT.Models
 	{
         [ForeignKey("KrajnjaDestinacijaD")]
         public Stanica KrajnjaDestinacija { get; set; }
-        public int KrajnjaDestinacijaD { get; set; }
+        public int KrajnjaDestinacijaID { get; set; }
 
         [ForeignKey("PocetnaDestinacijaID")]
         public Stanica PocetnaDestinacija { get; set; }
@@ -17,16 +15,8 @@ namespace GBT.Models
         public DateOnly DatumVoznje { get; set; }
         public string PocetakVoznje { get; set; }
         public string KrajVoznje { get; set; }
-        public string Trajanje { get; set; }
-        public Klasa KlasaVoznje { get; set; }
-        public bool Obrok { get; set; }
-        public bool Popust { get; set; }
-        public int BrojPerona { get; set; }
+        public string Trajanje{ get; set; }
     }
-    public enum Klasa
-    {
-       Prva,
-       Druga
-    }
+   
 }
 

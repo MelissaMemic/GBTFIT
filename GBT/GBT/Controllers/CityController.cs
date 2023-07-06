@@ -6,6 +6,8 @@ using MobitelShop.Data;
 
 namespace GBT.Controllers
 {
+    [ApiController]
+    [Route("[controller]/[action]")]
     public class CityController : ControllerBase
     {
         private readonly MojDBContext _dbContext;
@@ -20,6 +22,21 @@ namespace GBT.Controllers
         {
             return Ok(_dbContext.Grad.ToList());
         }
+
+        [Authorize]
+        [HttpGet("{name}")]
+        public ActionResult<List<Grad>> GetGradByName(string name)
+        {
+            var Grad = _dbContext.Grad.Where(x => x.Naziv.Contains(name)).ToList();
+            if (Grad.Any())
+            {
+                return Ok(Grad);
+
+            }
+            return NotFound(); // Return 404 if the resource with the specified ID is not found
+
+        }
+
     }
 }
 

@@ -14,7 +14,17 @@ namespace GBT.Models
         public Voznja Voznja { get; set; }
         public int VoznjaID { get; set; }
 
-        public int Cijena { get; set; }
+        public Klasa KlasaVoznje { get; set; }
+        public bool Obrok { get; set; }
+        public bool Popust { get; set; }
+        public int BrojPerona { get; set; }
+
+        public double Cijena { get; set; }
+    }
+    public enum Klasa
+    {
+        Prva,
+        Druga
     }
 }
 
