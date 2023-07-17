@@ -49,7 +49,7 @@ this.auth.login(this.loginForm.value).subscribe({
               this.auth.storeToken(res.accessToken);
               this.auth.storeRefreshToken(res.refreshToken);
               this.toast.success({detail:"SUCCESS!", summary:res.message,duration:5000});
-              this.router.navigate(['dashboard']);
+              this.router.navigate(['home-page']);
 
   },error:(err)=>{    
               this.toast.error({detail:"ERROR", summary:"Something went wrong!",duration:5000});

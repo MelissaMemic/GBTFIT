@@ -1,0 +1,49 @@
+.three-part-screen {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .part {
+    /* flex: 1;
+    position: relative; */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px; /* Adjust as needed */
+
+  }
+  
+  .background-image {
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+  }
+  
+  .part:nth-child(1) .background-image {
+    background-image: url('/src/assets/img/slika1.jpg');
+  }
+  
+  .part:nth-child(2) .background-image {
+    background-image: url('/src/assets/img/slika2.jpg');
+  }
+  
+  .part:nth-child(3) .background-image {
+    background-image: url('/src/assets/img/slika3.jpg');
+  }
+  
+  .text {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 255, 0.296);
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  h2 {
+    font-size: 18px;
+  }
+  

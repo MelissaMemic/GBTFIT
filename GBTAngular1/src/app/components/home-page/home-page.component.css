@@ -1,0 +1,103 @@
+.split-screen {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .left-side {
+    flex: 1;
+    position: relative;
+    background-color: rgba(0, 0, 255, 0.206);
+
+  }
+  
+  .background-image {
+    /* background-image: src('/src/assets/img/mostar.jpg'); */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
+    height: 100%;
+    background-repeat: no-repeat;
+  }
+  
+  .text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+  }
+  
+  
+  .content {
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 24px;
+  }
+  
+  h2 {
+    font-size: 20px;
+    color: white;
+  }
+  
+  button {
+    padding: 12px 24px;
+    font-size: 18px;
+    background-color: white;
+    color: blue;
+    border: none;
+    cursor: pointer;
+  }
+  .right-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 255, 0.206);
+    
+  }
+  
+  .upper-side {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid white;
+    padding-bottom: 20px; /* Adjust as needed */
+  }
+  
+  .lower-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px; /* Adjust as needed */
+  }
+  
+  .content {
+    text-align: center;
+  }
+  
+  h2 {
+    font-size: 20px;
+    color: white;
+  }
+  
+  button {
+    padding: 12px 24px;
+    font-size: 18px;
+    background-color: white;
+    color: blue;
+    border: none;
+    cursor: pointer;
+  }
+  
+  p {
+    color: white;
+  }
+  
+  

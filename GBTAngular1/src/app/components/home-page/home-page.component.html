@@ -1,0 +1,18 @@
+<div class="split-screen" [ngStyle]="{ 'background-image': 'url(' + currentImage + ')' }">
+    <div class="left-side" >
+      <div class="text-overlay">
+        <a routerLink="/tourist-info"> <p>To find out more information about touristic destinations, visit our Tourist info page.</p></a>
+    </div>
+    </div>
+    <div class="right-side">
+          <div class="content">
+            <h2>Book a train ticket now</h2>
+            <div class="arrow-icon">
+                <i class="bi bi-arrow-down-right-circle"></i>
+            </div>
+            <button (click)="navigateToTicketBooking()">Book a ticket</button>
+          </div>
+      </div>
+      
+  </div>
+  

@@ -19,7 +19,8 @@ namespace GBT.Models
         public bool Popust { get; set; }
         public int BrojPerona { get; set; }
 
-        public double Cijena { get; set; }
+        public double? Cijena { get; set; }
+        public bool isPlaceno { get; set; }
     }
     public enum Klasa
     {
