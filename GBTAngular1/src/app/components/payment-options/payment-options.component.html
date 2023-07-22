@@ -139,7 +139,6 @@
               <th scope="col">First</th>
               <th scope="col">Last</th>
               <th scope="col">
-                <button class="btn btn-primary">Book</button>
               </th>
             </tr>
           </thead>
@@ -148,7 +147,7 @@
               <td> <img src="../components/login/GBT.png" class="img-fluid img-thumbnail" alt="Sheep"></td>
               <td>{{option.dateOfDeparture}}</td>
               <td>{{option.dateOfFinish}}</td>
-              <td><button class="btn btn-primary" onclick="AddDepartureTicket(option.id)">Book</button></td>
+              <td><button class="btn btn-primary" (click)="AddDepartureTicket(option.id)">Book</button></td>
             </tr>
           </tbody>
         </table>
@@ -168,6 +167,7 @@
           <ul class="list-group list-group-light list-group-small">
             <li class="list-group-item px-4">Odlazak: {{this.selectedDestinations.start}}</li>
             <li class="list-group-item px-4">Datum: {{selectedDepartureDate}}</li>
+            <li class="list-group-item px-4">Vrijeme: {{selectedDepartureTime}}</li>
           </ul>
           <div class="card-body">
             <div class="form-check">
@@ -192,14 +192,15 @@
           <ul class="list-group list-group-light list-group-small">
             <li class="list-group-item px-4">Dolazak: {{this.selectedDestinations.end}}</li>
             <li class="list-group-item px-4">Datum: {{selectedDepartureDate}}</li>
+            <li class="list-group-item px-4">Vrijeme: {{selectedReturnTime}}</li>
           </ul>
           <div class="card-body">
             <div class="form-check">
               <input
                 mdbCheckbox
                 class="form-check-input"
+                (change)="toggleMeal()"
                 type="checkbox"
-                value="obrok"
                 id="flexCheckDefault"
               />
               <label class="form-check-label" for="flexCheckDefault">
@@ -209,9 +210,29 @@
           </div>
         </div>
       </div>
-      
+      <form>
+        <div class="form-group">
+          <div class="col-md-6">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="endDestinationDropdown"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{       selectedClass? selectedClass:     'Select Class'}}
+              </button>
+              <div class="dropdown-menu" aria-labelledby="endDestinationDropdown">
+                <a class="dropdown-item" href="#" (click)="selectClass($event, 'Class A')">Class A</a>
+                <a class="dropdown-item" href="#" (click)="selectClass($event, 'Class B')">Class B</a>
+                <a class="dropdown-item" href="#" (click)="selectClass($event, 'Class C')">Class C</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="seatNumber">Select seat number</label>
+          <input type="text" class="form-control" id="seatNumber" placeholder="XXX" [(ngModel)]="selectedSeat" name="selectedSeat">
+        </div>
+      </form>
       <!-- Place your form controls for class and seat selection here -->
-      <button class="btn btn-primary" (click)="nextStep()" [disabled]="!isClassAndSeatSelected()">Next</button>
+      <button class="btn btn-primary" (click)="nextStep(); saveSeat();" [disabled]="!isClassAndSeatSelected()">Next</button>
     </div>
 
     <!-- Step 3: Payment Options -->
@@ -220,7 +241,7 @@
       <!-- Place your form controls for payment options here -->
       <div class="form-group">
         <div class="form-check">
-          <input class="form-check-input" type="radio" id="cash" name="paymentMethod" value="cash" [(ngModel)]="selectedPaymentMethod">
+          <input class="form-check-input" type="radio" id="cash" (change)="togglePayment(false)" name="paymentMethod" value="cash" [(ngModel)]="selectedPaymentMethod">
           <label class="form-check-label" for="cash">
             <i class="fas fa-money-bill-wave"></i>
             Plaćanje gotovinom
@@ -229,7 +250,7 @@
       
   
         <div class="form-check">
-          <input class="form-check-input" type="radio" id="card" (change)="toggleMeal()" name="paymentMethod" value="card" [(ngModel)]="selectedPaymentMethod">
+          <input class="form-check-input" type="radio" id="card" (change)="togglePayment(true)" name="paymentMethod" value="card" [(ngModel)]="selectedPaymentMethod">
           <label class="form-check-label" for="card">
             <i class="fas fa-credit-card"></i>
             Plaćanje karticom
@@ -239,16 +260,20 @@
 
       <form *ngIf="isChecked == true">
         <div class="form-group">
-          <label for="exampleFormControlInput1">Ime prezime</label>
-          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="JohnDoe">
+          <label for="imePrezime">Ime prezime</label>
+          <input type="email" class="form-control" id="imePrezime" placeholder="JohnDoe">
         </div>
         <div class="form-group">
-          <label for="exampleFormControlInput1">Broj kartice</label>
-          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="XXX">
+          <label for="brojKartice">Broj kartice</label>
+          <input type="email" class="form-control" id="brojKartice" placeholder="XXX">
         </div>
         <div class="form-group">
-          <label for="exampleFormControlInput1">Datum</label>
-          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="XXX">
+          <label for="datum">Datum</label>
+          <input type="email" class="form-control" id="datum" placeholder="XXX">
+        </div>
+        <div class="form-group">
+          <label for="cvc">CVC</label>
+          <input type="password" class="form-control col-2" id="cvc" placeholder="CVC">
         </div>
       </form>
 

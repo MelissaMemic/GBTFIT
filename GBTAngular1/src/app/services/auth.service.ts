@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { TokenApiModel } from '../models/token-api.model';
+import { ProfilVM } from '../components/login/user';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +38,9 @@ getToken(){
 getRefreshedToken(){
   return localStorage.getItem('refreshToken')
 }
-
+getProfil() {
+  return this.http.get(`${this.baseUrl}GetProfil`);
+}
 isLoggedIn():boolean{
 return !!localStorage.getItem('token')
 }

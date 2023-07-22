@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Reflection.Emit;
+using GBT.Helpers;
 using GBT.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,6 +25,16 @@ namespace MobitelShop.Data
         //  base.OnConfiguring(optionsBuilder);
         //
         //}
+        protected override void ConfigureConventions(ModelConfigurationBuilder builder)
+        {
+
+            builder.Properties<DateOnly>()
+                .HaveConversion<DateOnlyConverter>()
+                .HaveColumnType("date");
+
+            base.ConfigureConventions(builder);
+
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
