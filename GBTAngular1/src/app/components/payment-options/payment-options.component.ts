@@ -17,7 +17,9 @@ export class PaymentOptionsComponent {
   selectedSeat: string = '';
   selectedPaymentOption: string = '';
   selectedPaymentMethod: boolean=false;
-
+  obrok: Boolean = false;
+  isChecked: Boolean = false;
+  
   nextStep() {
     this.currentStep++;
   }
@@ -58,5 +60,8 @@ export class PaymentOptionsComponent {
       {id:2,dateOfDeparture:'09:49', dateOfFinish:'19:00'},
       {id:3,dateOfDeparture:'10:49', dateOfFinish:'19:00'},
       {id:4,dateOfDeparture:'17:49', dateOfFinish:'19:00'}];
+  }
+  toggleMeal() {
+    this.isChecked = !this.isChecked;
   }
 }
