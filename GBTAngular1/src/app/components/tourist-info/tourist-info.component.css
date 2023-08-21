@@ -1,26 +1,23 @@
 .three-part-screen {
     display: flex;
     height: 100vh;
-  }
-  
-  .part {
-    /* flex: 1;
-    position: relative; */
-    flex: 1;
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 20px; /* Adjust as needed */
+    
+  }
 
+  .parts-container{
+    display: flex;
+    flex: 1;
+    
   }
-  
-  .background-image {
-    background-size: cover;
-    background-position: center;
-    height: 100%;
-  }
-  
+
+  .part {
+    flex: 1;
+    padding: 20px;
+    overflow: auto;
+    border: 1px solid white;
+   }
+   
   .part:nth-child(1) .background-image {
     background-image: url('/src/assets/img/slika1.jpg');
   }

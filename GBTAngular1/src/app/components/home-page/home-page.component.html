@@ -1,16 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Get By Train</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/tourist-info">Tourist Info</a>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
+
 <div class="split-screen" [ngStyle]="{ 'background-image': 'url(' + currentImage + ')' }">
-    <div class="left-side" >
+    <div class="left-side">
       <div class="text-overlay">
-        <a routerLink="/tourist-info"> <p>To find out more information about touristic destinations, visit our Tourist info page.</p></a>
-    </div>
+        <!-- <a routerLink="/tourist-info"> <p>To find out more information about touristic destinations, visit our Tourist info page.</p></a>
+   --> 
+    <h5 class="mb-4"> Tourist info page</h5>
+    <a class="btn btn-outline-light btn-lg m-2" href="/tourist-info" role="button"
+      rel="nofollow" target="_blank">More info</a>
+    </div> 
     </div>
     <div class="right-side">
           <div class="content">
+            
             <h2>Book a train ticket now</h2>
-            <div class="arrow-icon">
-                <i class="bi bi-arrow-down-right-circle"></i>
-            </div>
-            <button (click)="navigateToTicketBooking()">Book a ticket</button>
+           
+            <a (click)="navigateToTicketBooking()" class="btn btn-outline-light btn-lg m-2" target="_blank"
+            role="button">Book a ticket</a>
+      
+            <!-- <button >Book a ticket</button> -->
           </div>
       </div>
       

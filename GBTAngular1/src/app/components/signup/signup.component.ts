@@ -39,7 +39,7 @@ export class SignupComponent implements OnInit{
   }
   onSignUp(){
     if(this.signUpForm.valid){
-      this.auth.signUp(this.signUpForm.valid).subscribe({
+      this.auth.signUp(this.signUpForm.value).subscribe({
         next:(res)=>{
           this.signUpForm.reset();
           this.toast.success({detail:"SUCCESS", summary:res.message, duration:5000});

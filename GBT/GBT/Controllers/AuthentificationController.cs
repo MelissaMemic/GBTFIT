@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using MobitelShop.Data;
 using MobitelShop.Helpers;
 using Microsoft.IdentityModel.Tokens;
+using GBT.Helpers;
 
 namespace GBT.Controllers
 {
@@ -22,8 +23,8 @@ namespace GBT.Controllers
         }
         public class SignUpVM
         {
-            public string Ime { get; set; }
-            public string Prezime { get; set; }
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
             public string Email { get; set; }
             public string Username { get; set; }
             public string Password { get; set; }
@@ -52,8 +53,8 @@ namespace GBT.Controllers
                 };
                 _dbContext.Add(korisnik);
 
-                korisnik.Ime = x.Ime;
-                korisnik.Prezime = x.Prezime;
+                korisnik.Ime = x.FirstName;
+                korisnik.Prezime = x.LastName;
                 korisnik.Email = x.Email;
                 korisnik.Username = x.Username;
                 korisnik.Password = PasswordHasher.HashPassword(x.Password);
@@ -108,48 +109,63 @@ namespace GBT.Controllers
         public ActionResult Login([FromBody] LoginVM x)
         {
 
-            //if (x == null)
-            //    return BadRequest();
+            if (x == null)
+                return BadRequest();
 
-            //var korisnik = _dbContext.Korisnik.FirstOrDefault(k => k.Username == x.Username);
+            var korisnik = _dbContext.Korisnik.FirstOrDefault(k => k.Username == x.Username);
 
-            //if (korisnik == null)
-            //    return NotFound(new { Message = "Korisnik ne postoji !" });
+            if (korisnik == null)
+                return NotFound(new { Message = "Korisnik ne postoji !" });
 
-            //if (!PasswordHasher.VerifyPassword(x.Password, korisnik.Password))
-            //{
-            //    return BadRequest(new { Message = "Password is incorrect" }); //alert
-            //}
+            if (!PasswordHasher.VerifyPassword(x.Password, korisnik.Password))
+            {
+                return BadRequest(new { Message = "Password is incorrect" }); //alert
+            }
 
-            //korisnik.Token = KreirajJWT(korisnik);
+            korisnik.Token = KreirajJWT(korisnik);
             return Ok(new
             {
-                Token = "FJFJkdsjdclnn32efkej",
+                Token = korisnik.Token,
                 Message = "Korisnik uspjesno logiran !"
             });
         }
 
         private string KreirajJWT(Korisnik korisnik)
         {
-            var jwtTokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes("veryverysecret.....");
-            var identity = new ClaimsIdentity(new Claim[]
-            {
-                new Claim(ClaimTypes.Role, korisnik.Rola),
-                new Claim(ClaimTypes.Name,$"{korisnik.Ime} {korisnik.Prezime}"),
-                new Claim(ClaimTypes.NameIdentifier, korisnik.ID.ToString())
-            });
+            string secretKey = KeyGenerator.GenerateKey(32); // Replace with your key
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
 
-            var credentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256);
+            var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = identity,
-                Expires = DateTime.Now.AddDays(1),
-                SigningCredentials = credentials
-            };
-            var token = jwtTokenHandler.CreateToken(tokenDescriptor);
-            return jwtTokenHandler.WriteToken(token);
+            var token = new JwtSecurityToken(
+                issuer: "your_issuer",
+                audience: "your_audience",
+                expires: DateTime.UtcNow.AddHours(1), // Set token expiration
+                signingCredentials: credentials
+            );
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            return tokenHandler.WriteToken(token);
+
+            //var jwtTokenHandler = new JwtSecurityTokenHandler();
+            //var key = Encoding.ASCII.GetBytes("veryverysecret.....");
+            //var identity = new ClaimsIdentity(new Claim[]
+            //{
+            //    new Claim(ClaimTypes.Role, korisnik.Rola),
+            //    new Claim(ClaimTypes.Name,$"{korisnik.Ime} {korisnik.Prezime}"),
+            //    new Claim(ClaimTypes.NameIdentifier, korisnik.ID.ToString())
+            //});
+
+            //var credentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256);
+
+            //var tokenDescriptor = new SecurityTokenDescriptor
+            //{
+            //    Subject = identity,
+            //    Expires = DateTime.Now.AddDays(1),
+            //    SigningCredentials = credentials
+            //};
+            //var token = jwtTokenHandler.CreateToken(tokenDescriptor);
+            //return jwtTokenHandler.WriteToken(token);
 
         }
 

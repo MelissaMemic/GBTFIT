@@ -13,7 +13,7 @@ private baseUrl:string="https://localhost:7219/Autentification/";
   constructor(private http : HttpClient ,private router: Router) { }
 
 signUp(signUpObject:any){
-  return this.http.post<any>(`${this.baseUrl}register`,signUpObject); 
+  return this.http.post<any>(`${this.baseUrl}SignUp`,signUpObject); 
 }
 
 storeRefreshToken(tokenValue:string){

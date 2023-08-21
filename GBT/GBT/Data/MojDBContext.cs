@@ -39,6 +39,16 @@ namespace MobitelShop.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder); //ni ovo nego je radio ono modelBuilder.Entity<Student>().ToTable("Student"); ali to nama ne treba
+            modelBuilder.Entity<Voznja>()
+            .HasOne(v => v.PocetnaDestinacija)
+            .WithMany()
+            .HasForeignKey(v => v.PocetnaDestinacijaID)
+            .OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Voznja>()
+            .HasOne(v => v.KrajnjaDestinacija)
+            .WithMany()
+            .HasForeignKey(v => v.KrajnjaDestinacijaID)
+            .OnDelete(DeleteBehavior.NoAction);
         }
 
 
