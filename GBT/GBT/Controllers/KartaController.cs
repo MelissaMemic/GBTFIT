@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Net.Mail;
+using System.Net;
 using GBT.Models;
 using GBT.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -66,7 +68,15 @@ namespace GBT.Controllers
             {
                 return BadRequest("pogresan ID");
             }
-           
+            var korisnik = _dbContext.Korisnik.Where(k => k.ID == x.KorisnikID).FirstOrDefault();
+            var smtpClient = new SmtpClient("smtp.gmail.com")
+            {
+                Port = 587,
+                Credentials = new NetworkCredential("anel.mema@gmail.com", "blablabla"),
+                EnableSsl = true,
+            };
+
+            smtpClient.Send("anel.mema@gmail.com", "anel.memic@edu.fit.ba", "Vaša karta", novaKarta.ToString());
             return Ok(novaKarta);
         }
     }

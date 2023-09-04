@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProfilVM } from '../login/user';
 import { AuthService } from 'src/app/services/auth.service';
+import { KartaService } from 'src/app/services/karta.service';
+import { KartaSnimiVM } from 'src/app/models/karta_snimi_model';
 
 @Component({
   selector: 'app-placanje',
@@ -27,6 +29,7 @@ export class PaymentOptionsComponent implements OnInit {
 
   constructor(
     private auth: AuthService,
+    private karta: KartaService,
     private router:Router)
     {}
   ngOnInit(): void {
@@ -86,7 +89,18 @@ export class PaymentOptionsComponent implements OnInit {
     return true
   }
   finishBooking() {
-
+    var karta = new KartaSnimiVM();
+    karta.korisnikId = 1;
+    karta.BrojPerona = 3;
+    karta.Cijena = 10;
+    karta.DatumVoznje = this.selectedDepartureDate == '' ? new Date('01/01/2001') : new Date(this.selectedDepartureDate);
+    karta.KlasaVoznje = this.selectedClass == '' ? '1' : this.selectedClass;
+    karta.KrajVoznje = this.selectedReturnTime == '' ? '19:00' : this.selectedReturnTime;
+    karta.Obrok = this.obrok;
+    karta.Popust = true;
+    karta.PocetakVoznje = this.selectedDepartureTime == '' ? '18:00' : this.selectedDepartureTime;
+    karta.Trajanje = '3 sata'
+    this.karta.snimi(karta)
     // Perform the final booking logic here
     console.log('Booking finished!');
   }
