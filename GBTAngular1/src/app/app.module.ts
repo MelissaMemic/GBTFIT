@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -15,6 +14,12 @@ import { PaymentOptionsComponent } from './components/payment-options/payment-op
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { TouristInfoComponent } from './components/tourist-info/tourist-info.component';
+import { LiveTrackingComponent } from './components/live-tracking/live-tracking.component';
+import { AgmCoreModule } from '@agm/core';
+import { CommonModule } from '@angular/common';
+
+// import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import {  HttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,16 +30,29 @@ import { TouristInfoComponent } from './components/tourist-info/tourist-info.com
     ReservationViewComponent,
     PaymentOptionsComponent,
     HomePageComponent,
-    TouristInfoComponent
+    TouristInfoComponent,
+    LiveTrackingComponent
   ],
   imports: [
     BrowserModule,
+    // TranslateModule.forRoot({
+    //     loader: {
+    //         provide: TranslateLoader,
+    //         useFactory: HttpLoaderFactory,
+    //         deps: [HttpClient],
+    //     },
+    // }),
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
     NgToastModule,
     FormsModule,
-    SlickCarouselModule,
+    SlickCarouselModule,CommonModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDLrCrNK5uXTFkdoOr7P2IX-JMMlfFdm3E',
+      libraries: ['places']
+
+    })
 
   ],
   providers: [{
@@ -44,4 +62,9 @@ import { TouristInfoComponent } from './components/tourist-info/tourist-info.com
   }],
   bootstrap: [AppComponent]
 })
+
+
 export class AppModule { }
+// export function HttpLoaderFactory(http: HttpClient) {
+//   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+//}

@@ -1,0 +1,41 @@
+{
+    "HELLO": "Hallo",
+    "WELCOME": "Willkomen zu der app Get By Train!",
+    "TOURISTINFO": "Tourist informationen",
+    "LIVETRACKING": "Live Tracking",
+    "TOURISTINFOPAGE":"Tourist information Seite",
+    "MOREINFO":"Mehr info",
+    "BOOKNOW":"Ticket jetzt kaufen!",
+    "BOOKTICKET":"Ticket kaufen",
+    "TRACK":"Hier sehen sie ihren live Standort",
+    "SARAJEVO":"Sarajevo ist die Hauptstadt von Bosnien und Herzegowina und befindet sich am Fluss Miljacka, einem rechten Nebenfluss der Bosna, im östlichen Teil des Sarajevo-Zenica-Beckens. Laut Volkszählung von 2013 hat die Stadt Sarajevo 275.524 Einwohner, und laut Schätzung von Juni 2019 ist diese Zahl auf 274.879 Einwohner gesunken. Die erweiterte Stadtregion umfasst über eine halbe Million Einwohner. Sarajevo ist die größte Stadt in Bosnien und Herzegowina und ein herausragendes kulturelles Zentrum in Südosteuropa. Die Stadt ist bekannt für ihre traditionelle kulturelle und religiöse Vielfalt, zu der Anhänger des Islam, des Orthodoxen Christentums, des Judentums und des Katholizismus gehören. Aufgrund ihrer langen und reichen Geschichte sowie ihrer Zugehörigkeit zu verschiedenen Religionen und Kulturen wird Sarajevo manchmal als Jerusalem Europas bezeichnet."
+    ,
+    "MOSTAR":"Mostar ist eine Stadt in Bosnien und Herzegowina. Sie liegt an den Ufern des Flusses Neretva und ist das kulturelle und wirtschaftliche Zentrum von Herzegowina sowie gleichzeitig die größte Stadt in Herzegowina. Mostar ist Verwaltungssitz des Herzegowina-Neretva-Kantons und das universitäre, kulturelle, wirtschaftliche und politische Zentrum der Kroaten in Bosnien und Herzegowina. Die Stadt erhielt ihren Namen von den Brückenwächtern (mostari) an den Ufern des Flusses Neretva. Sie zählt zu den schönsten Städten in Bosnien und Herzegowina. Die Neretva wird von der Alten Brücke überspannt, die zusammen mit der Altstadt seit 2005 auf der Liste des UNESCO-Weltkulturerbes steht.",
+    "SIGNUP":"Registrieren",
+    "LOGIN":"Anmelden",
+    "FNREQUIRED":"Name ist erforderlich",
+    "LNREQUIRED":"Nachname ist erforderlich",
+    "EREQUIRED":"Email ist erforderlich",
+    "PWREQUIRED":"Password ist erforderlich",
+    "UNREQUIRED":" Username ist erforderlich",
+    "DURATION":"Dauer",
+    "START":"Beggin",
+    "END":"Ankunft Zeit",
+    "CHOOSE":"Auswahlen",
+    "SEARCH":"Suchen",
+    "NEXT":"Nachster Schrit",
+    "SELECTSTARTD":"Startposition auswahlen",
+    "SELECTENDD":"Reiseziel auswahlen",
+    "DATEOFD":"Start Datum auswahlen",
+    "DATEOFR":"Rückreise",
+    "ONEWAY":"One way",
+    "CASHPAYMENT":"Bezahlen vor Ort",
+    "CARDPAY":"Mit Karte bezahlen",
+    "FLNAME":"Name",
+    "CARDNUM":"Kartennummer",
+    "TICKETOPTIONS":"Ticket optionen",
+    "DATE":"Datum"
+
+
+
+}

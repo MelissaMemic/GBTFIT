@@ -1,16 +1,33 @@
 /* CSS styling */
 .outer {
     
-    background-color: #104aa2;
-    margin: 0;
+    margin: 0 ;
   padding: 0;
+      background-image: url('plava.jpeg');
+      background-size: cover;
+      background-position: center;
+      /* opacity: 0.9; */
   
-  background-size: 100%;
+    background-size: cover;
   background-position: center;
   background-repeat:no-repeat;
   height: 100vh;
   }
-  
+
+  .step1{
+    background-color: rgba(255, 255, 255, 0.685);
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 1%;
+  }
+.row{
+  padding: 15px;
+  margin: 10px;
+}
+table{
+  background-color: transparent;
+
+}
   .form-title {
     color: #007bff;
     margin-bottom: 20px;

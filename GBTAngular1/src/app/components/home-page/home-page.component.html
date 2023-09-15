@@ -11,9 +11,19 @@
       <li class="nav-item">
         <a class="nav-link" href="/tourist-info">Tourist Info</a>
       </li>
-      
+      <li class="nav-item">
+        <a class="nav-link" href="/live-tracking">Live tracking</a>
+      </li>
+
     </ul>
+    <div class="col-2">
+      <!-- <select class="custom-select" (change)="changeLang($event.target.value)">
+        <option value="en" [selected]="lang=='en'">English</option>
+        <option value="de" [selected]="lang=='de'">Deutsch</option>
+      </select> -->
+    </div>
   </div>
+  
 </nav>
 
 <div class="split-screen" [ngStyle]="{ 'background-image': 'url(' + currentImage + ')' }">
@@ -40,3 +50,54 @@
       
   </div>
   
+
+
+
+
+<!-- 
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Get By Train</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="/home-page">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/tourist-info">Tourist Info</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/live-tracking">Live tracking</a>
+        </li>
+  
+      </ul>
+      <div class="col-2">
+      </div>
+    </div>
+    
+  </nav>
+  
+  <div class="split-screen" [ngStyle]="{ 'background-image': 'url(' + currentImage + ')' }">
+      <div class="left-side">
+        <div class="text-overlay">
+      <h5 class="mb-4"> {{ 'TOURISTINFOPAGE' | translate }}</h5>
+      <a class="btn btn-outline-light btn-lg m-2" href="/tourist-info" role="button"
+        rel="nofollow" target="_blank">{{ 'MOREINFO' | translate }}</a>
+      </div> 
+      </div>
+      <div class="right-side">
+            <div class="content">
+              
+              <h2>{{ 'BOOKNOW' | translate }}</h2>
+             
+              <a (click)="navigateToTicketBooking()" class="btn btn-outline-light btn-lg m-2" target="_blank"
+              role="button">{{ 'BOOKTICKET' | translate }}</a>
+        
+            </div>
+        </div>
+        
+    </div>
+     -->

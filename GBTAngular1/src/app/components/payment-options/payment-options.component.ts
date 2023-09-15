@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProfilVM } from '../login/user';
 import { AuthService } from 'src/app/services/auth.service';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-placanje',
@@ -10,13 +11,16 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class PaymentOptionsComponent implements OnInit {
   currentStep = 1;
-  selectedDestinations: any = {};
-  selectedDepartureDate: string = '';
+  selectedDestinations = { start: "", end: "" };
+    selectedDepartureDate: string = '';
   selectedDepartureTime: string = '';
   selectedReturnTime: string = '';
   selectedReturnDate: string = '';
   isOneWay: boolean = false;
   ticketOptions: any = {};
+  stanice: any[] = [];
+  Startstanice: any[] = [];
+  Endstanice: any[] = [];
   selectedClass: string = '';
   selectedSeat: string = '';
   selectedPaymentOption: string = '';
@@ -24,19 +28,39 @@ export class PaymentOptionsComponent implements OnInit {
   obrok: Boolean = false;
   isChecked: Boolean = false;
   user: ProfilVM = new ProfilVM;
+  IsStartDestination:Boolean=false;
+  selectedStanica: any;
 
   constructor(
     private auth: AuthService,
-    private router:Router)
-    {}
-  ngOnInit(): void {
-    //this.auth.getProfil().subscribe({
-    //  next: (res) => {
-    //    this.user = res as ProfilVM;
-    //    console.log(res);
-    //  }
-    //});
+    private router:Router,
+    private apiService: ApiService)
+    {  
+        // translate.setDefaultLang('de'); 
   }
+  ngOnInit(): void {
+    this.apiService.getStanice().subscribe((stanice) => {
+      this.Startstanice = stanice;
+      this.Endstanice = stanice;
+    });
+
+  }
+
+  onStartDestinationChange() {
+    const startId = parseInt(this.selectedDestinations.start, 10); 
+    const isStartDestination = true; 
+  
+    if (!isNaN(startId)) {
+      this.apiService.getStaniceById(startId, isStartDestination).subscribe((endStations) => {
+        this.Endstanice = endStations;
+      });
+    } else {
+      this.Endstanice = []; 
+    }
+  
+
+  }
+
   nextStep() {
     this.currentStep++;
   }
@@ -63,14 +87,6 @@ export class PaymentOptionsComponent implements OnInit {
 
     this.selectedSeat = destination;
   }
-  //selectClass(event: Event, class: string) {
-  //  event.preventDefault();
-  //  this.selectClass = class;
-  //}
-  //selectSeat(event: Event, seat: string) {
-  //  event.preventDefault();
-  //  this.selectSeat = seat;
-  //}
   areDestinationsSelected() {
     // return this.selectedDestinations.start && this.selectedDestinations.end;
     return true
@@ -91,12 +107,24 @@ export class PaymentOptionsComponent implements OnInit {
     console.log('Booking finished!');
   }
   searchOptions() {
+
+    // this.dataService.getData().subscribe((data) => {
+    //   this.data = data;
+    // });
     // Simulating search options
-    this.ticketOptions = [
-      {id:1,dateOfDeparture:'07:49', dateOfFinish:'19:00'},
-      {id:2,dateOfDeparture:'09:49', dateOfFinish:'19:00'},
-      {id:3,dateOfDeparture:'10:49', dateOfFinish:'19:00'},
-      {id:4,dateOfDeparture:'17:49', dateOfFinish:'19:00'}];
+    // this.ticketOptions = [
+    //   {id:1,dateOfDeparture:'07:49', dateOfFinish:'19:00'},
+    //   {id:2,dateOfDeparture:'09:49', dateOfFinish:'19:00'},
+    //   {id:3,dateOfDeparture:'10:49', dateOfFinish:'19:00'},
+    //   {id:4,dateOfDeparture:'17:49', dateOfFinish:'19:00'}];
+
+    // selectedDepartureDate
+    const startDestination = parseInt(this.selectedDestinations.start, 10); 
+    const endDestination = parseInt(this.selectedDestinations.end, 10); 
+   this.apiService.getVoznjeInfo(this.selectedDepartureDate, startDestination,endDestination).subscribe((voznje) => {
+    this.ticketOptions = voznje;
+      });
+
   }
   togglePayment(check: Boolean) {
     this.isChecked = check;

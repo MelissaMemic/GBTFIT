@@ -1,37 +1,3 @@
-<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-
-
- HTML code -->
-<!-- <form class="payment-form" (ngSubmit)="submitForm()">
-    <h2 class="form-title">Način plaćanja</h2>
-  
-    <div class="form-group">
-      <div class="form-check">
-        <input class="form-check-input" type="radio" id="cash" name="paymentMethod" value="cash" [(ngModel)]="selectedPaymentMethod">
-        <label class="form-check-label" for="cash">
-          <i class="fas fa-money-bill-wave"></i>
-          Plaćanje gotovinom
-        </label>
-      </div>
-    </div>
-  
-    <div class="form-group">
-      <div class="form-check">
-        <input class="form-check-input" type="radio" id="card" name="paymentMethod" value="card" [(ngModel)]="selectedPaymentMethod">
-        <label class="form-check-label" for="card">
-          <i class="fas fa-credit-card"></i>
-          Plaćanje karticom
-        </label>
-      </div>
-    </div>
-  
-    <button type="submit" class="btn btn-primary">Dalje</button>
-  </form>
-  
-   -->
 
 <div class="outer">
   <!-- <button (click)="logOut()" class="btn btn-danger" >Log Out</button> -->
@@ -43,12 +9,15 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="/home-page">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/tourist-info">Tourist Info</a>
         </li>
-        
+        <li class="nav-item">
+          <a class="nav-link" href="/live-tracking">Live tracking</a>
+        </li>
+  
       </ul>
     </div>
   </nav>
@@ -63,43 +32,27 @@
 
     <!-- Step 1: Select Start and End Destinations -->
     <div *ngIf="currentStep === 1">
-      <h4>Step 1: Select Destinations</h4>
+      <div class="step1">
       <div class="row">
-        <div class="col-md-6">
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="startDestinationDropdown"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-{{       selectedDestinations.start? selectedDestinations.start:     'Select Start Destination'}}
-            </button>
-            <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div> -->
-            <div class="dropdown-menu" aria-labelledby="startDestinationDropdown">
-              <a class="dropdown-item" href="#" (click)="selectStartDestination($event, 'Destination1')">Destination 1</a>
-              <a class="dropdown-item" href="#" (click)="selectStartDestination($event, 'Destination2')">Destination 2</a>
-              <a class="dropdown-item" href="#" (click)="selectStartDestination($event, 'Destination3')">Destination 3</a>
-            </div>
-          </div>
+          <div class="col-md-6">
+            <label for="stanicaStartDropdown">Select Start Stanica:</label>
+            <select id="stanicaStartDropdown" [(ngModel)]="selectedDestinations.start" (change)="onStartDestinationChange()">
+              <option value="">Choose a Destination Station</option> 
+              <option *ngFor="let stanica of Startstanice" [value]="stanica.id">{{ stanica.naziv }}</option>
+            </select>
+
+
+
         </div>
+        
         <div class="col-md-6">
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="endDestinationDropdown"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{       selectedDestinations.end? selectedDestinations.end:     'Select End Destination'}}
-            </button>
-            <div class="dropdown-menu" aria-labelledby="endDestinationDropdown">
-              <a class="dropdown-item" href="#" (click)="selectEndDestination($event, 'Destination1')">Destination 1</a>
-              <a class="dropdown-item" href="#" (click)="selectEndDestination($event, 'Destination2')">Destination 2</a>
-              <a class="dropdown-item" href="#" (click)="selectEndDestination($event, 'Destination3')">Destination 3</a>
-            </div>
-            <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div> -->
-          </div>
+          <label for="stanicaEndDropdown">Select End Stanica:</label>
+          <select id="stanicaEndDropdown" [(ngModel)]="selectedDestinations.end" >
+            <option value="">Choose a Destination Station</option> 
+            <option *ngFor="let stanica of Endstanice" [value]="stanica.id">{{ stanica.naziv }}</option>
+          </select>
+
+
         </div>
       </div>
 
@@ -112,32 +65,29 @@
         </div>
         <div class="col-md-6">
           <div class="form-group" *ngIf="!isOneWay">
-            <label for="returnDate">Return Date:</label>
+            <label for="returnDate">Date of Return:</label>
             <input class="form-control" type="datetime-local" id="returnDate" [(ngModel)]="selectedReturnDate">
           </div>
         </div>
-      </div>
-
-      <div class="form-check">
+        <div class="form-check">
         <input class="form-check-input" type="checkbox" id="oneWay" [(ngModel)]="isOneWay">
         <label class="form-check-label" for="oneWay">One Way</label>
       </div>
 
       <button class="btn btn-primary" (click)="searchOptions()">Search</button>
+        
+      </div>
 
-      <!-- Popup List of Ticket Options -->
+      
       <div *ngIf="ticketOptions.length > 0" class="ticket-options">
-        <h4>Available Ticket Options:</h4>
-        <ul>
-          <li *ngFor="let option of ticketOptions">{{ option }}</li>
-        </ul>
         <table class="table">
-          <caption>List of users</caption>
+          <caption>List of available rides</caption>
           <thead>
             <tr>
               <th scope="col">SLIKA kompanije</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
+              <th scope="col">Trajanje</th>
+              <th scope="col">Pocetak voznje</th>
+              <th scope="col">Kraj voznje</th>
               <th scope="col">
               </th>
             </tr>
@@ -146,7 +96,8 @@
             <tr  *ngFor="let option of ticketOptions">
               <td> <img src="../components/login/GBT.png" class="img-fluid img-thumbnail" alt="Sheep"></td>
               <td>{{option.dateOfDeparture}}</td>
-              <td>{{option.dateOfFinish}}</td>
+              <td>{{option.pocetakVoznje}}</td>
+              <td>{{option.krajVoznje}}</td>
               <td><button class="btn btn-primary" (click)="AddDepartureTicket(option.id)">Book</button></td>
             </tr>
           </tbody>
@@ -154,6 +105,7 @@
       </div>
 
       <button class="btn btn-primary" style="margin-left: 94%;" (click)="nextStep()" [disabled]="!areDestinationsSelected()">Next</button>
+    </div>
     </div>
 
     <!-- Step 2: Select Class and Seat Number -->
@@ -298,7 +250,258 @@
 
 </div>
 
+
+
+
+
 <!-- 
+
+
+
+<div class="outer">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Get By Train</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="/home-page">{{ 'HOMEPAGE' | translate }} <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/tourist-info">{{ 'TOURISTINFO' | translate }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/live-tracking">{{ 'LIVETRACKING' | translate }}</a>
+        </li>
+  
+      </ul>
+    </div>
+  </nav>
+  
+  <div class="container">
+    <h1>Ticket Booking</h1>
+
+    <div class="progress">
+      <div class="progress-bar" [style.width]="getProgressWidth()"></div>
+    </div>
+
+    <div *ngIf="currentStep === 1">
+      <div class="step1">
+      <div class="row">
+          <div class="col-md-6">
+            <label for="stanicaStartDropdown">{{ 'SELECTSTARTD' | translate }}</label>
+            <select id="stanicaStartDropdown" [(ngModel)]="selectedDestinations.start" (change)="onStartDestinationChange()">
+              <option value="">Choose a Destination Station</option> 
+              <option *ngFor="let stanica of Startstanice" [value]="stanica.id">{{ stanica.naziv }}</option>
+            </select>
+
+
+
+        </div>
+        
+        <div class="col-md-6">
+          <label for="stanicaEndDropdown">{{ 'SELECTENDD' | translate }}</label>
+          <select id="stanicaEndDropdown" [(ngModel)]="selectedDestinations.end" >
+            <option value="">Choose a Destination Station</option> 
+            <option *ngFor="let stanica of Endstanice" [value]="stanica.id">{{ stanica.naziv }}</option>
+          </select>
+
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="departureDate">{{ 'DATEOFD' | translate }}</label>
+            <input class="form-control" type="datetime-local" id="departureDate" [(ngModel)]="selectedDepartureDate">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group" *ngIf="!isOneWay">
+            <label for="returnDate">{{ 'DATEOFR' | translate }}</label>
+            <input class="form-control" type="datetime-local" id="returnDate" [(ngModel)]="selectedReturnDate">
+          </div>
+        </div>
+        <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="oneWay" [(ngModel)]="isOneWay">
+        <label class="form-check-label" for="oneWay">{{ 'ONEWAY' | translate }}</label>
+      </div>
+
+      <button class="btn btn-primary" (click)="searchOptions()">{{ 'SEARCH' | translate }}</button>
+        
+      </div>
+
+      
+      <div *ngIf="ticketOptions.length > 0" class="ticket-options">
+        <table class="table">
+          <caption>{{ 'TICKETOPTIONS' | translate }}</caption>
+          <thead>
+            <tr>
+              <th scope="col">-</th>
+              <th scope="col">{{ 'DURATION' | translate }}</th>
+              <th scope="col">{{ 'START' | translate }}</th>
+              <th scope="col">{{ 'END' | translate }}</th>
+              <th scope="col">
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor="let option of ticketOptions">
+              <td> <img src="../components/login/GBT.png" class="img-fluid img-thumbnail" alt="Sheep"></td>
+              <td>{{option.trajanje}}</td>
+              <td>{{option.pocetakVoznje}}</td>
+              <td>{{option.krajVoznje}}</td>
+              <td><button class="btn btn-primary" (click)="AddDepartureTicket(option.id)">{{ 'CHOOSE' | translate }}</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <button class="btn btn-primary" style="margin-left: 94%;" (click)="nextStep()" [disabled]="!areDestinationsSelected()">{{ 'NEXT' | translate }}</button>
+    </div>
+    </div>
+
+    <div *ngIf="currentStep === 2">
+      <h2>Step 2: Select Class and Seat Number</h2>
+      <div class = "row space-between">
+        <div class="card col-sm-5 border">
+          <div class="card-body">
+            <h5 class="card-title">Departure ticket</h5>
+          </div>
+          <ul class="list-group list-group-light list-group-small">
+            <li class="list-group-item px-4">Odlazak: {{this.selectedDestinations.start}}</li>
+            <li class="list-group-item px-4">Datum: {{selectedDepartureDate}}</li>
+            <li class="list-group-item px-4">Vrijeme: {{selectedDepartureTime}}</li>
+          </ul>
+          <div class="card-body">
+            <div class="form-check">
+              <input
+                mdbCheckbox
+                class="form-check-input"
+                type="checkbox"
+                value="obrok"
+                id="flexCheckDefault"
+              />
+              <label class="form-check-label" for="flexCheckDefault">
+                Obrok
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class = "col-sm-2"></div>
+        <div *ngIf = "isOneWay==false" class="card col-sm-5 border">
+          <div class="card-body">
+            <h5 class="card-title">Return ticket</h5>
+          </div>
+          <ul class="list-group list-group-light list-group-small">
+            <li class="list-group-item px-4">Dolazak: {{this.selectedDestinations.end}}</li>
+            <li class="list-group-item px-4">Datum: {{selectedDepartureDate}}</li>
+            <li class="list-group-item px-4">Vrijeme: {{selectedReturnTime}}</li>
+          </ul>
+          <div class="card-body">
+            <div class="form-check">
+              <input
+                mdbCheckbox
+                class="form-check-input"
+                (change)="toggleMeal()"
+                type="checkbox"
+                id="flexCheckDefault"
+              />
+              <label class="form-check-label" for="flexCheckDefault">
+                Obrok
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form>
+        <div class="form-group">
+          <div class="col-md-6">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="endDestinationDropdown"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{       selectedClass? selectedClass:     'Select Class'}}
+              </button>
+              <div class="dropdown-menu" aria-labelledby="endDestinationDropdown">
+                <a class="dropdown-item" href="#" (click)="selectClass($event, 'Class A')">Class A</a>
+                <a class="dropdown-item" href="#" (click)="selectClass($event, 'Class B')">Class B</a>
+                <a class="dropdown-item" href="#" (click)="selectClass($event, 'Class C')">Class C</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="seatNumber">Select seat number</label>
+          <input type="text" class="form-control" id="seatNumber" placeholder="XXX" [(ngModel)]="selectedSeat" name="selectedSeat">
+        </div>
+      </form>
+      <button class="btn btn-primary" (click)="nextStep(); saveSeat();" [disabled]="!isClassAndSeatSelected()">{{ 'NEXT' | translate }}</button>
+    </div>
+
+    <div *ngIf="currentStep === 3">
+      <h2>Step 3: Payment Options</h2>
+      <div class="form-group">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" id="cash" (change)="togglePayment(false)" name="paymentMethod" value="cash" [(ngModel)]="selectedPaymentMethod">
+          <label class="form-check-label" for="cash">
+            <i class="fas fa-money-bill-wave"></i>
+            {{ 'CASHPAYMENT' | translate }}
+          </label>
+        </div>
+      
+  
+        <div class="form-check">
+          <input class="form-check-input" type="radio" id="card" (change)="togglePayment(true)" name="paymentMethod" value="card" [(ngModel)]="selectedPaymentMethod">
+          <label class="form-check-label" for="card">
+            <i class="fas fa-credit-card"></i>
+            {{ 'CARDPAY' | translate }}
+          </label>
+        </div>
+      </div>
+
+      <form *ngIf="isChecked == true">
+        <div class="form-group">
+          <label for="imePrezime">{{ 'FLNAME' | translate }}</label>
+          <input type="email" class="form-control" id="imePrezime" placeholder="JohnDoe">
+        </div>
+        <div class="form-group">
+          <label for="brojKartice">{{ 'CARDNUM' | translate }}</label>
+          <input type="email" class="form-control" id="brojKartice" placeholder="XXX">
+        </div>
+        <div class="form-group">
+          <label for="datum">{{ 'DATE' | translate }}</label>
+          <input type="email" class="form-control" id="datum" placeholder="XXX">
+        </div>
+        <div class="form-group">
+          <label for="cvc">CVC</label>
+          <input type="password" class="form-control col-2" id="cvc" placeholder="CVC">
+        </div>
+      </form>
+
+      <button class="btn btn-primary" (click)="nextStep()" [disabled]="!isPaymentOptionSelected()">{{ 'NEXT' | translate }}</button>
+    </div>
+
+    <div *ngIf="currentStep === 4">
+      <h2>Step 4: Finish Booking</h2>
+      <p>Summary of Booking:</p>
+      <p>Start Destination: {{ selectedDestinations.start }}</p>
+      <p>End Destination: {{ selectedDestinations.end }}</p>
+      <p>Date of Departure: {{ selectedDepartureDate }}</p>
+      <p *ngIf="!isOneWay">Return Date: {{ selectedReturnDate }}</p>
+      <p>Class: {{ selectedClass }}</p>
+      <p>Seat: {{ selectedSeat }}</p>
+      <p>Payment Option: {{ selectedPaymentOption }}</p>
+      <button class="btn btn-success" (click)="finishBooking()">Finish Booking</button>
+    </div>
+  </div>
+
+
+</div>
+
+
 <div class="container">
   <h1>Ticket Booking</h1>
 

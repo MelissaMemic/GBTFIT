@@ -6,28 +6,47 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/home-page">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/tourist-info">Tourist Info</a>
       </li>
-      
+      <li class="nav-item">
+        <a class="nav-link" href="/live-tracking">Live tracking</a>
+      </li>
     </ul>
   </div>
 </nav>
-<div class="three-part-screen">
-  <div class="parts-container">
-
-    <div class="part">
-        <h2>Text 1</h2>
-    </div>
-    <div class="part">
-        <h2>Text 2</h2>
-    </div>
-    <div class="part">
-        <h2>Text 3</h2>
+<div class="split-screen">
+  <div class="left-side" [ngStyle]="{ 'background-image': 'url(' + currentImage1 + ')' }">
+    <div class="text-overlay-left">
+      <!-- <a routerLink="/tourist-info"> <p>To find out more information about touristic destinations, visit our Tourist info page.</p></a>
+ 
+  <h5 class="mb-4"> Tourist info page</h5>
+  <a class="btn btn-outline-light btn-lg m-2" href="/tourist-info" role="button"
+    rel="nofollow" target="_blank">More info</a> -->
+<h2>Sarajevo</h2> 
+    <p> je glavni i najveći grad Bosne i Hercegovine. Nalazi se na rijeci Miljacki, desnom pritoku Bosne, u istočnom dijelu sarajevsko-zeničke kotline.</p><p>Prema popisu stanovništva 2013. godine, Grad Sarajevo ima 275.524 stanovnika, a prema procjeni iz lipnja 2019., taj broj se spustio na 274.879 stanovnika. Šire područje grada okuplja više od pola milijuna stanovnika </p><p>Sarajevo je najveći grad u Bosni i Hercegovini i istaknuti kulturno središte u Jugoistočnoj Europi. Grad je poznat po svojoj tradicionalnoj kulturnoj i vjerskoj raznolikosti, koji uključuju pripadnike: islama, pravoslavlja, judaizma i katolicizma. Zbog svoje duge i bogate povijesti i pripadnosti, vjerskih i kulturnih raznolikosti, Sarajevo se ponekad naziva "Jeruzalem Europe".</p>
+  </div> 
+  </div>
+  <div class="right-side" [ngStyle]="{ 'background-image': 'url(' + currentImage2 + ')' }">
+        <!-- <div class="content"> -->
+          <div class="text-overlay">
+            <!-- <a routerLink="/tourist-info"> <p>To find out more information about touristic destinations, visit our Tourist info page.</p></a>
+       
+        <h5 class="mb-4"> Tourist info page</h5>
+        <a class="btn btn-outline-light btn-lg m-2" href="/tourist-info" role="button"
+          rel="nofollow" target="_blank">More info</a> -->
+      <h2>Mostar</h2> 
+          <p>  je grad u Bosni i Hercegovini. Smješten je na obalama rijeke Neretve i kulturno je i gospodarsko središte Hercegovine, a ujedno i najveći grad u Hercegovini. Mostar je upravno sjedište Hercegovačko-neretvanskog kantona te univerzitetsko, kulturno, privredno i političko središte Hrvata u Bosni i Hercegovini.
+     </p>
+     <p>Grad je ime dobio po čuvarima mostova (mostarima) na obalama rijeke Neretve. Ubraja se u jedan od najljepših gradova u Bosni i Hercegovini. Neretvu premošćuje Stari most, koji se zajedno sa starim gradom od 2005. godine nalazi na popisu zaštićene kulturne baštine UNESCO-a.</p>
         
-  </div>
+        </div> 
+          
+    </div>
+    
 </div>
-  </div>
+   
+
   
