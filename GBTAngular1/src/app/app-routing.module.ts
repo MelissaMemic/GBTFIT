@@ -9,6 +9,7 @@ import { PaymentOptionsComponent } from './components/payment-options/payment-op
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { TouristInfoComponent } from './components/tourist-info/tourist-info.component';
 import { LiveTrackingComponent } from './components/live-tracking/live-tracking.component';
+import { TicketOverviewComponent } from './components/ticket-overview/ticket-overview.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'login',pathMatch:'prefix'},
@@ -16,10 +17,11 @@ const routes: Routes = [
   {path:'signUp', component:SignupComponent},
   {path:'reset', component:ResetComponent},
   { path: 'rezervacija', component: ReservationViewComponent },
-  { path: 'placanje', component: PaymentOptionsComponent },
+  { path: 'payment-options', component: PaymentOptionsComponent,canActivate: [AuthGuard] },
   { path: 'home-page', component: HomePageComponent ,canActivate: [AuthGuard]},
   { path: 'tourist-info', component: TouristInfoComponent ,canActivate: [AuthGuard]},
   { path: 'live-tracking', component: LiveTrackingComponent },
+  { path: 'ticket-overview', component: TicketOverviewComponent },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

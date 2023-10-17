@@ -60,8 +60,6 @@ export class PaymentOptionsComponent implements OnInit {
     } else {
       this.Endstanice = []; 
     }
-  
-
   }
 
   nextStep() {
@@ -119,23 +117,12 @@ export class PaymentOptionsComponent implements OnInit {
     this.karta.snimi(karta);
   }
   searchOptions() {
-
-    // this.dataService.getData().subscribe((data) => {
-    //   this.data = data;
-    // });
-    // Simulating search options
-    // this.ticketOptions = [
-    //   {id:1,dateOfDeparture:'07:49', dateOfFinish:'19:00'},
-    //   {id:2,dateOfDeparture:'09:49', dateOfFinish:'19:00'},
-    //   {id:3,dateOfDeparture:'10:49', dateOfFinish:'19:00'},
-    //   {id:4,dateOfDeparture:'17:49', dateOfFinish:'19:00'}];
-
-    // selectedDepartureDate
     const startDestination = parseInt(this.selectedDestinations.start, 10); 
     const endDestination = parseInt(this.selectedDestinations.end, 10); 
-   this.apiService.getVoznjeInfo(this.selectedDepartureDate, startDestination,endDestination).subscribe((voznje) => {
-    this.ticketOptions = voznje;
-      });
+
+    this.apiService.getVoznjeInfo(this.selectedDepartureDate, startDestination,endDestination).subscribe((voznje) => {
+          this.ticketOptions = voznje;
+    });
 
   }
   togglePayment(check: Boolean) {

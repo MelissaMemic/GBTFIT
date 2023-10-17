@@ -20,14 +20,15 @@ namespace GBT.Controllers
             this._dbContext = dbContext;
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet]
         public ActionResult<Karta> GetKarte()
         {
             return Ok(_dbContext.Karta.ToList());
         }
 
-        [Authorize]
+       //[Authorize]
+
         [HttpGet("{id}")]
         public ActionResult<List<Karta>> GetByKorisnikId(int id)
         {
@@ -68,15 +69,15 @@ namespace GBT.Controllers
             {
                 return BadRequest("pogresan ID");
             }
-            var korisnik = _dbContext.Korisnik.Where(k => k.ID == x.KorisnikID).FirstOrDefault();
-            var smtpClient = new SmtpClient("smtp.gmail.com")
-            {
-                Port = 587,
-                Credentials = new NetworkCredential("anel.mema@gmail.com", "blablabla"),
-                EnableSsl = true,
-            };
+            //var korisnik = _dbContext.Korisnik.Where(k => k.ID == x.KorisnikID).FirstOrDefault();
+            //var smtpClient = new SmtpClient("smtp.gmail.com")
+            //{
+            //    Port = 587,
+            //    Credentials = new NetworkCredential("anel.mema@gmail.com", "blablabla"),
+            //    EnableSsl = true,
+            //};
 
-            smtpClient.Send("anel.mema@gmail.com", "anel.memic@edu.fit.ba", "Vaša karta", novaKarta.ToString());
+            //smtpClient.Send("anel.mema@gmail.com", "anel.memic@edu.fit.ba", "Vaša karta", novaKarta.ToString());
             return Ok(novaKarta);
         }
     }

@@ -16,7 +16,7 @@ namespace GBT.Controllers
             this._dbContext = dbContext;
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet]
         public ActionResult<Stanica> GetStanice()
         {

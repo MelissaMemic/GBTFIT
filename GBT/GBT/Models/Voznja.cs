@@ -12,7 +12,7 @@ namespace GBT.Models
         public Stanica PocetnaDestinacija { get; set; }
         public int PocetnaDestinacijaID { get; set; }
 
-        public DateOnly DatumVoznje { get; set; }
+        public DateTime DatumVoznje { get; set; }
         public string PocetakVoznje { get; set; }
         public string KrajVoznje { get; set; }
         public string Trajanje{ get; set; }

@@ -17,9 +17,12 @@ import { TouristInfoComponent } from './components/tourist-info/tourist-info.com
 import { LiveTrackingComponent } from './components/live-tracking/live-tracking.component';
 import { AgmCoreModule } from '@agm/core';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
+
 
 // import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {  HttpClient } from '@angular/common/http';
+import { TicketOverviewComponent } from './components/ticket-overview/ticket-overview.component';
 
 @NgModule({
   declarations: [
@@ -31,9 +34,11 @@ import {  HttpClient } from '@angular/common/http';
     PaymentOptionsComponent,
     HomePageComponent,
     TouristInfoComponent,
-    LiveTrackingComponent
+    LiveTrackingComponent,
+    TicketOverviewComponent
   ],
   imports: [
+    //TranslateModule.forRoot(),
     BrowserModule,
     // TranslateModule.forRoot({
     //     loader: {

@@ -1,7 +1,6 @@
 import { Component, OnDestroy ,OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
-
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -13,7 +12,6 @@ export class HomePageComponent implements OnDestroy, OnInit {
     '../assets/img/slika2.jpg',
     '../assets/img/slika3.jpg'
   ];
-  
   currentImageIndex = 0;
   currentImage: string;
   lang:any;

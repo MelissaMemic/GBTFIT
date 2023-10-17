@@ -16,7 +16,7 @@ namespace GBT.Controllers
             this._dbContext = dbContext;
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet]
         public ActionResult<Voznja> GetVoznja()
         {
@@ -24,7 +24,7 @@ namespace GBT.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetVoznjeInfo([FromBody] VoznjaInfoVM vm)
+        public ActionResult GetVoznjeInfo([FromQuery] VoznjaInfoVM vm)
         {
             var voznje = new List<Voznja>();
 
@@ -33,7 +33,7 @@ namespace GBT.Controllers
             return Ok(voznje);
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet("{id}")]
         public ActionResult<Voznja> GetVoznjaById(int id)
         {

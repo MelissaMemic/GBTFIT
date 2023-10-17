@@ -9,7 +9,8 @@ export class ApiService {
   private baseUrl:string="https://localhost:7219/";
   private voznjeUrl:string="https://localhost:7219/Voznja/";
   private staniceUrl:string="https://localhost:7219/Stanica/";
-  
+  private ticketUrl = 'https://localhost:7219/Karta/'; 
+
   constructor(private http:HttpClient) { }
 
   getUsers(){
@@ -20,6 +21,11 @@ export class ApiService {
 // getStaniceById(vm: any): Observable<any[]> {
 //   return this.http.get<any[]>(`${this.staniceUrl}GetStaniceById`, vm);
 // }
+getTicketsByUserId(userId: number): Observable<any[]> {
+  const url = `${this.ticketUrl}GetByKorisnikId/${userId}`;
+  return this.http.get<any[]>(url);
+}
+
 getStaniceById(startId: number, isStartDestination: boolean): Observable<any[]> {
   const vm = { id: startId, IsStartDestination: isStartDestination };
 
