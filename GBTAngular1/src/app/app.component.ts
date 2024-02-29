@@ -15,7 +15,6 @@ export class AppComponent {
    title = 'nobleui-angular';
 
 constructor(private translationService: TranslationService) {
-  // register translations
   this.translationService.loadTranslations(
     bsLang,
     enLang,

@@ -14,10 +14,10 @@ import { PaymentOptionsComponent } from './components/payment-options/payment-op
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { TouristInfoComponent } from './components/tourist-info/tourist-info.component';
-import { LiveTrackingComponent } from './components/live-tracking/live-tracking.component';
-import { AgmCoreModule } from '@agm/core';
+// import { LiveTrackingComponent } from './components/live-tracking/live-tracking.component';
+// import { AgmCoreModule } from '@agm/core';
 import { CommonModule } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 
  import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -34,19 +34,19 @@ import { TicketOverviewComponent } from './components/ticket-overview/ticket-ove
     PaymentOptionsComponent,
     HomePageComponent,
     TouristInfoComponent,
-    LiveTrackingComponent,
+    // LiveTrackingComponent,
     TicketOverviewComponent
   ],
   imports: [
    // TranslateModule.forRoot(),
     BrowserModule,
-    // TranslateModule.forRoot({
-    //     loader: {
-    //         provide: TranslateLoader,
-    //         useFactory: HttpLoaderFactory,
-    //         deps: [HttpClient],
-    //     },
-    // }),
+    TranslateModule.forRoot({
+        loader: {
+            provide: TranslateLoader,
+            useFactory: HttpLoaderFactory,
+            deps: [HttpClient],
+        },
+    }),
     AppRoutingModule,
    
 
@@ -55,11 +55,11 @@ import { TicketOverviewComponent } from './components/ticket-overview/ticket-ove
     NgToastModule,
     FormsModule,
     SlickCarouselModule,CommonModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDLrCrNK5uXTFkdoOr7P2IX-JMMlfFdm3E',
-      libraries: ['places']
+    // AgmCoreModule.forRoot({
+    //   apiKey: 'AIzaSyDLrCrNK5uXTFkdoOr7P2IX-JMMlfFdm3E',
+    //   libraries: ['places']
 
-    })
+    // })
 
   ],
   providers: [{
@@ -72,6 +72,6 @@ import { TicketOverviewComponent } from './components/ticket-overview/ticket-ove
 
 
 export class AppModule { }
-// export function HttpLoaderFactory(http: HttpClient) {
-//   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-//}
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}

@@ -1,1 +1,0 @@
-{"ast":null,"code":"export class ProfilVM {\n  constructor() {\n    this.Ime = '';\n    this.Prezime = '';\n    this.Username = '';\n    this.Email = '';\n  }\n}","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}
