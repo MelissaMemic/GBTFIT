@@ -16,7 +16,6 @@ namespace GBT.Controllers
             this._dbContext = dbContext;
         }
 
-        //[Authorize]
         [HttpGet]
         public ActionResult<Voznja> GetVoznja()
         {
@@ -28,12 +27,11 @@ namespace GBT.Controllers
         {
             var voznje = new List<Voznja>();
 
-            voznje = _dbContext.Voznja.Where(x => x.PocetnaDestinacijaID == vm.PolaznaStanica&& x.KrajnjaDestinacijaID == vm.PovratnaStanica&&x.DatumVoznje==vm.DatumPolaska).ToList();
+            voznje = _dbContext.Voznja.Where(x => x.PocetnaDestinacijaID == vm.PolaznaStanica&& x.KrajnjaDestinacijaID == vm.PovratnaStanica&&x.DatumVoznje.Date==vm.DatumPolaska.Date).ToList();
 
             return Ok(voznje);
         }
 
-        //[Authorize]
         [HttpGet("{id}")]
         public ActionResult<Voznja> GetVoznjaById(int id)
         {

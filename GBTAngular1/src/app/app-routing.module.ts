@@ -10,6 +10,7 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { TouristInfoComponent } from './components/tourist-info/tourist-info.component';
 // import { LiveTrackingComponent } from './components/live-tracking/live-tracking.component';
 import { TicketOverviewComponent } from './components/ticket-overview/ticket-overview.component';
+import { LiveTrackingComponent } from './components/live-tracking/live-tracking.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'login',pathMatch:'prefix'},
@@ -20,7 +21,7 @@ const routes: Routes = [
   { path: 'payment-options', component: PaymentOptionsComponent,canActivate: [AuthGuard] },
   { path: 'home-page', component: HomePageComponent ,canActivate: [AuthGuard]},
   { path: 'tourist-info', component: TouristInfoComponent ,canActivate: [AuthGuard]},
-  // { path: 'live-tracking', component: LiveTrackingComponent },
+  { path: 'live-tracking', component: LiveTrackingComponent },
   { path: 'ticket-overview', component: TicketOverviewComponent },
 ];
 @NgModule({

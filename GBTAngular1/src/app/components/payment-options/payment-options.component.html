@@ -94,7 +94,7 @@
           </thead>
           <tbody>
             <tr  *ngFor="let option of ticketOptions">
-              <td> <img src="../components/login/GBT.png" class="img-fluid img-thumbnail" alt="Sheep"></td>
+              <td> <img src="/assets/img/ZFBH.jpg" class="img-fluid img-thumbnail" alt="Sheep"></td>
               <td>{{option.dateOfDeparture}}</td>
               <td>{{option.pocetakVoznje}}</td>
               <td>{{option.krajVoznje}}</td>
@@ -243,7 +243,7 @@
       <p>Class: {{ selectedClass }}</p>
       <p>Seat: {{ selectedSeat }}</p>
       <p>Payment Option: {{ selectedPaymentOption }}</p>
-      <button class="btn btn-success" (click)="finishBooking()">Finish Booking</button>
+      <button class="btn btn-success" type="submit" (click)="finishBooking()">Finish Booking</button>
     </div>
   </div>
 

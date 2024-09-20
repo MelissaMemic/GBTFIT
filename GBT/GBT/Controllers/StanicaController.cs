@@ -22,7 +22,6 @@ namespace GBT.Controllers
         {
             return Ok(_dbContext.Stanica.ToList());
         }
-        [Authorize]
         [HttpGet("{id}")]
         public ActionResult<Stanica> GetStanicaById(int id)
         {

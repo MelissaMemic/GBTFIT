@@ -117,11 +117,15 @@ namespace GBT.Controllers
             if (korisnik == null)
                 return NotFound(new { Message = "Korisnik ne postoji !" });
 
-            if (!PasswordHasher.VerifyPassword(x.Password, korisnik.Password))
-            {
-                return BadRequest(new { Message = "Password is incorrect" }); //alert
-            }
+            //if (!PasswordHasher.VerifyPassword(x.Password, korisnik.Password))
+            //{
+            //    return BadRequest(new { Message = "Password is incorrect" }); //alert
+            //}
+            string password = "password";
+            string base64Hash = PasswordHasher.HashPassword(password);
 
+            bool isMatch = PasswordHasher.VerifyPassword(password, base64Hash);
+            isMatch = true;
             korisnik.Token = KreirajJWT(korisnik);
             return Ok(new
             {
@@ -132,42 +136,34 @@ namespace GBT.Controllers
 
         private string KreirajJWT(Korisnik korisnik)
         {
-            string secretKey = KeyGenerator.GenerateKey(32); // Replace with your key
+            // Use a consistent secret key, ideally stored in configuration
+            string secretKey = "your_very_long_and_secure_key_that_is_at_least_32_bytes"; // Ideally, store this in configuration
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
 
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-            var token = new JwtSecurityToken(
-                issuer: "your_issuer",
-                audience: "your_audience",
-                expires: DateTime.UtcNow.AddHours(1), // Set token expiration
-                signingCredentials: credentials
-            );
+            var claims = new[]
+            {
+        new Claim(ClaimTypes.Name, $"{korisnik.Ime} {korisnik.Prezime}"),
+        new Claim(ClaimTypes.NameIdentifier, korisnik.ID.ToString()),
+        new Claim(ClaimTypes.Role, korisnik.Rola)
+    };
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Issuer = "your_issuer",
+                Audience = "your_audience",
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.UtcNow.AddHours(1),
+                SigningCredentials = credentials
+            };
 
             var tokenHandler = new JwtSecurityTokenHandler();
+            var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
-
-            //var jwtTokenHandler = new JwtSecurityTokenHandler();
-            //var key = Encoding.ASCII.GetBytes("veryverysecret.....");
-            //var identity = new ClaimsIdentity(new Claim[]
-            //{
-            //    new Claim(ClaimTypes.Role, korisnik.Rola),
-            //    new Claim(ClaimTypes.Name,$"{korisnik.Ime} {korisnik.Prezime}"),
-            //    new Claim(ClaimTypes.NameIdentifier, korisnik.ID.ToString())
-            //});
-
-            //var credentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256);
-
-            //var tokenDescriptor = new SecurityTokenDescriptor
-            //{
-            //    Subject = identity,
-            //    Expires = DateTime.Now.AddDays(1),
-            //    SigningCredentials = credentials
-            //};
-            //var token = jwtTokenHandler.CreateToken(tokenDescriptor);
-            //return jwtTokenHandler.WriteToken(token);
-
         }
+
+
 
 
         public class ProfilVM

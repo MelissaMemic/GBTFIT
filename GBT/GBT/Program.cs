@@ -7,15 +7,14 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// Add services to the container.
-builder.Services.AddCors(option =>
+builder.Services.AddCors(options =>
 {
-    option.AddPolicy("MyPolicy", builder =>
+    options.AddPolicy("MyPolicy", builder =>
     {
         builder.WithOrigins("http://localhost:4200", "https://localhost:4200")
-      .AllowAnyMethod()
-      .AllowAnyHeader()
-      .AllowCredentials();
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials();
     });
 });
 
@@ -56,14 +55,12 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseRouting();
-app.UseCors("MyPolicy");
+app.UseCors("MyPolicy"); // Apply CORS policy
 
 app.UseHttpsRedirection();
-app.UseAuthentication();
-
-app.UseAuthorization();
+app.UseAuthentication(); // Apply authentication
+app.UseAuthorization();  // Apply authorization
 
 app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
 
 app.Run();
-

@@ -216,7 +216,6 @@ namespace GBT.Migrations
                 column: "PocetnaDestinacijaID");
         }
 
-        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

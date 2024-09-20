@@ -4,7 +4,7 @@ namespace GBT.Models
 {
 	public class Voznja:BaseEntity
 	{
-        [ForeignKey("KrajnjaDestinacijaD")]
+        [ForeignKey("KrajnjaDestinacijaID")]
         public Stanica KrajnjaDestinacija { get; set; }
         public int KrajnjaDestinacijaID { get; set; }
 

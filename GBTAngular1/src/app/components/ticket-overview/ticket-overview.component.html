@@ -27,9 +27,9 @@
 </nav>
 <div class="ticket-container">
     <div *ngFor="let ticket of tickets" class="ticket-block">
-      <img src="/src/assets/img/mostar.jpg" alt="{{ ticket.name }} Image" class="ticket-image" />
+      <img src="/src/assets/img/tickets.png" alt="{{ ticket.name }} Image" class="ticket-image" />
       <div class="ticket-details">
-        <h4>{{ ticket.klasaVoznje }}</h4>
+        <h4>Klasa voznje: {{ ticket.klasaVoznje }}</h4>
         <p>Price: ${{ ticket.cijena }}</p>
         <!-- Add more details as needed -->
       </div>

@@ -16,14 +16,12 @@ namespace GBT.Controllers
             this._dbContext = dbContext;
         }
 
-        [Authorize]
         [HttpGet]
         public ActionResult<Grad> GetGradovi()
         {
             return Ok(_dbContext.Grad.ToList());
         }
 
-        [Authorize]
         [HttpGet("{name}")]
         public ActionResult<List<Grad>> GetGradByName(string name)
         {

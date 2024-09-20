@@ -20,14 +20,12 @@ namespace GBT.Controllers
             this._dbContext = dbContext;
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpGet]
         public ActionResult<Karta> GetKarte()
         {
             return Ok(_dbContext.Karta.ToList());
         }
-
-       //[Authorize]
 
         [HttpGet("{id}")]
         public ActionResult<List<Karta>> GetByKorisnikId(int id)
@@ -37,10 +35,54 @@ namespace GBT.Controllers
             {
                 return Ok(karteKorisnika);
             }
-            return NotFound(); // Return 404 if the resource with the specified ID is not found
+            return NotFound(); 
 
 
         }
+        [HttpGet("past-bookings")]
+        public ActionResult<List<Karta>> GetPastBookings(int korisnikID)
+        {
+            var now = DateTime.UtcNow;
+            var pastBookings = _dbContext.Karta
+                .Where(k => k.KorisnikID == korisnikID && k.Voznja.DatumVoznje < now)
+                .Select(k => new {
+                    k.ID,
+                    Date = k.Voznja.DatumVoznje.ToString("yyyy-MM-dd"),
+                    Destination = k.Voznja.KrajnjaDestinacijaID,
+                    Class = k.KlasaVoznje,
+                    Meal = k.Obrok,
+                    Discount = k.Popust,
+                    PlatformNumber = k.BrojPerona,
+                    Price = k.Cijena,
+                    Paid = k.isPlaceno
+                })
+                .ToList();
+
+            return Ok(pastBookings);
+        }
+
+        [HttpGet("upcoming-reservations")]
+        public ActionResult<List<Karta>> GetUpcomingReservations(int korisnikID)
+        {
+            var now = DateTime.UtcNow;
+            var upcomingReservations = _dbContext.Karta
+                .Where(k => k.KorisnikID == korisnikID && k.Voznja.DatumVoznje >= now)
+                .Select(k => new {
+                    k.ID,
+                    Date = k.Voznja.DatumVoznje.ToString("yyyy-MM-dd"),
+                    Destination = k.Voznja.KrajnjaDestinacijaID,
+                    Class = k.KlasaVoznje,
+                    Meal = k.Obrok,
+                    Discount = k.Popust,
+                    PlatformNumber = k.BrojPerona,
+                    Price = k.Cijena,
+                    Paid = k.isPlaceno
+                })
+                .ToList();
+
+            return Ok(upcomingReservations);
+        }
+
 
         [HttpPost]
         public ActionResult Snimi([FromBody] KartaSnimiVM x)
@@ -51,7 +93,7 @@ namespace GBT.Controllers
                 novaKarta = new Karta
                 {
                     KorisnikID = x.KorisnikID,
-                    VoznjaID = x.ID,
+                    VoznjaID = x.PocetnaDestinacijaID, 
                     BrojPerona = x.BrojPerona,
                     KlasaVoznje = x.KlasaVoznje,
                     Obrok = x.Obrok,
@@ -63,23 +105,19 @@ namespace GBT.Controllers
                 {
                     novaKarta.Cijena -= 3;
                 }
+
                 _dbContext.Add(novaKarta);
+                _dbContext.SaveChanges(); 
             }
             else
             {
                 return BadRequest("pogresan ID");
             }
-            //var korisnik = _dbContext.Korisnik.Where(k => k.ID == x.KorisnikID).FirstOrDefault();
-            //var smtpClient = new SmtpClient("smtp.gmail.com")
-            //{
-            //    Port = 587,
-            //    Credentials = new NetworkCredential("anel.mema@gmail.com", "blablabla"),
-            //    EnableSsl = true,
-            //};
 
-            //smtpClient.Send("anel.mema@gmail.com", "anel.memic@edu.fit.ba", "Vaša karta", novaKarta.ToString());
+
             return Ok(novaKarta);
         }
+
     }
 }
 

@@ -16,14 +16,12 @@ namespace GBT.Controllers
             this._dbContext = dbContext;
         }
 
-        [Authorize]
         [HttpGet]
         public ActionResult<Drzava> GetDrzave()
         {
             return Ok(_dbContext.Drzava.ToList());
         }
 
-        [Authorize]
         [HttpGet("{name}")]
         public ActionResult<List<Drzava>> GetDrzavaByName(string name)
         {

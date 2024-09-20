@@ -1,6 +1,8 @@
 import { Component, OnDestroy ,OnInit} from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 import { interval, Subscription } from 'rxjs';
+import { TranslationModule, TranslationService } from 'src/app/shared/i18n';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -18,11 +20,10 @@ export class HomePageComponent implements OnDestroy, OnInit {
 
   private subscription: Subscription;
 
-  constructor(private router: Router) {
+  constructor(private router: Router,private translate:TranslationService) {
     this.currentImage = this.images[this.currentImageIndex];
     this.subscription = interval(3000).subscribe(() => this.changeBackgroundImage()); 
     // translate.setDefaultLang('de');
-
   }
   
 
