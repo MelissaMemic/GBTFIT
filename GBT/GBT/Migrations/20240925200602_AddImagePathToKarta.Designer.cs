@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MobitelShop.Data;
 
@@ -11,9 +12,11 @@ using MobitelShop.Data;
 namespace GBT.Migrations
 {
     [DbContext(typeof(MojDBContext))]
-    partial class MojDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240925200602_AddImagePathToKarta")]
+    partial class AddImagePathToKarta
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,36 +51,36 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 1,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3780),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3780),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5420),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5420),
                             Naziv = "Bosna i Hercegovina"
                         },
                         new
                         {
                             ID = 2,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3790),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3790),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5420),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5420),
                             Naziv = "Hrvatska"
                         },
                         new
                         {
                             ID = 3,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3790),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3790),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5430),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5430),
                             Naziv = "Srbija"
                         },
                         new
                         {
                             ID = 4,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3790),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3790),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5430),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5430),
                             Naziv = "Slovenija"
                         },
                         new
                         {
                             ID = 5,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3790),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3790),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5430),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5430),
                             Naziv = "Crna Gora"
                         });
                 });
@@ -114,16 +117,16 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 1,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4140),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4140),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5770),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5770),
                             KorisnikID = 1,
                             RasporedVoznjiID = 5
                         },
                         new
                         {
                             ID = 2,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4140),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4140),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5780),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5780),
                             KorisnikID = 2,
                             RasporedVoznjiID = 3
                         });
@@ -164,8 +167,8 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 1,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3930),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3930),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5530),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5530),
                             DrzavaID = 1,
                             Naziv = "Sarajevo",
                             PostanskiBroj = "71000"
@@ -173,8 +176,8 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 2,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3930),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3930),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5540),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5540),
                             DrzavaID = 2,
                             Naziv = "Zagreb",
                             PostanskiBroj = "10000"
@@ -182,8 +185,8 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 3,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3930),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3930),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5540),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5540),
                             DrzavaID = 3,
                             Naziv = "Beograd",
                             PostanskiBroj = "11000"
@@ -191,8 +194,8 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 4,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3930),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3930),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5540),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5540),
                             DrzavaID = 4,
                             Naziv = "Ljubljana",
                             PostanskiBroj = "1000"
@@ -200,8 +203,8 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 5,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3930),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3930),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5540),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5540),
                             DrzavaID = 5,
                             Naziv = "Podgorica",
                             PostanskiBroj = "81000"
@@ -250,9 +253,9 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 1,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4160),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4160),
-                            DatumPlacanja = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4160),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5800),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5800),
+                            DatumPlacanja = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5790),
                             Iznos = 120.50m,
                             KorisnikID = 1,
                             MetodPlacanja = "Kreditna kartica",
@@ -261,9 +264,9 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 2,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4160),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4160),
-                            DatumPlacanja = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4160),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5800),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5800),
+                            DatumPlacanja = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5800),
                             Iznos = 89.99m,
                             KorisnikID = 2,
                             MetodPlacanja = "PayPal",
@@ -303,9 +306,6 @@ namespace GBT.Migrations
                     b.Property<bool>("Obrok")
                         .HasColumnType("bit");
 
-                    b.Property<byte[]>("Pdf")
-                        .HasColumnType("varbinary(max)");
-
                     b.Property<bool>("Popust")
                         .HasColumnType("bit");
 
@@ -329,8 +329,8 @@ namespace GBT.Migrations
                             ID = 1,
                             BrojPerona = 2,
                             Cijena = 50.0,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4070),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4070),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5680),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5680),
                             KlasaVoznje = 0,
                             KorisnikID = 1,
                             Obrok = true,
@@ -343,8 +343,8 @@ namespace GBT.Migrations
                             ID = 2,
                             BrojPerona = 3,
                             Cijena = 60.0,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4080),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4080),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5690),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5690),
                             KlasaVoznje = 0,
                             KorisnikID = 2,
                             Obrok = true,
@@ -357,8 +357,8 @@ namespace GBT.Migrations
                             ID = 3,
                             BrojPerona = 1,
                             Cijena = 40.0,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4080),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4080),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5690),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5690),
                             KlasaVoznje = 1,
                             KorisnikID = 3,
                             Obrok = false,
@@ -371,8 +371,8 @@ namespace GBT.Migrations
                             ID = 4,
                             BrojPerona = 4,
                             Cijena = 70.0,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4080),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4080),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5690),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5690),
                             KlasaVoznje = 1,
                             KorisnikID = 4,
                             Obrok = true,
@@ -385,8 +385,8 @@ namespace GBT.Migrations
                             ID = 5,
                             BrojPerona = 2,
                             Cijena = 55.0,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4080),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4080),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5690),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5690),
                             KlasaVoznje = 0,
                             KorisnikID = 5,
                             Obrok = true,
@@ -446,8 +446,8 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 1,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3980),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3980),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5590),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5590),
                             Email = "fariss@example.com",
                             Ime = "Fariss",
                             Password = "password",
@@ -459,8 +459,8 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 2,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3980),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3980),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5590),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5590),
                             Email = "john@example.com",
                             Ime = "John",
                             Password = "password",
@@ -472,8 +472,8 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 3,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3990),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3990),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5600),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5600),
                             Email = "jane@example.com",
                             Ime = "Jane",
                             Password = "password",
@@ -485,8 +485,8 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 4,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3990),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3990),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5600),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5600),
                             Email = "alice@example.com",
                             Ime = "Alice",
                             Password = "password",
@@ -498,8 +498,8 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 5,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3990),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3990),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5600),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5600),
                             Email = "bob@example.com",
                             Ime = "Bob",
                             Password = "password",
@@ -546,8 +546,8 @@ namespace GBT.Migrations
                             ID = 1,
                             BrojKartice = "1234567890123456",
                             Code = 123,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4010),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4010),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5620),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5620),
                             KorisnikID = 1
                         },
                         new
@@ -555,8 +555,8 @@ namespace GBT.Migrations
                             ID = 2,
                             BrojKartice = "2345678901234567",
                             Code = 234,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4010),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4010),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5620),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5620),
                             KorisnikID = 2
                         },
                         new
@@ -564,8 +564,8 @@ namespace GBT.Migrations
                             ID = 3,
                             BrojKartice = "3456789012345678",
                             Code = 345,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4010),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4010),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5620),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5620),
                             KorisnikID = 3
                         },
                         new
@@ -573,8 +573,8 @@ namespace GBT.Migrations
                             ID = 4,
                             BrojKartice = "4567890123456789",
                             Code = 456,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4010),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4010),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5630),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5630),
                             KorisnikID = 4
                         },
                         new
@@ -582,8 +582,8 @@ namespace GBT.Migrations
                             ID = 5,
                             BrojKartice = "5678901234567890",
                             Code = 567,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4020),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4020),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5630),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5630),
                             KorisnikID = 5
                         });
                 });
@@ -622,8 +622,8 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 1,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4120),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4120),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5750),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5750),
                             KorisnikID = 1,
                             Nivo = "Silver",
                             Poeni = 100
@@ -631,8 +631,8 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 2,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4120),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4120),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5760),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5760),
                             KorisnikID = 2,
                             Nivo = "Gold",
                             Poeni = 250
@@ -676,8 +676,8 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 1,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4180),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4180),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5820),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5820),
                             DatumSlanja = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             KorisnikID = 1,
                             Poruka = "Voz kasni 15 minuta",
@@ -686,8 +686,8 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 2,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4190),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4190),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5820),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5820),
                             DatumSlanja = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             KorisnikID = 2,
                             Poruka = "Nova promotivna ponuda",
@@ -732,8 +732,8 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 1,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4200),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4200),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5830),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5830),
                             DatumOcenjivanja = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Komentar = "Odlična usluga",
                             Ocjena = 5,
@@ -742,8 +742,8 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 2,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4200),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4200),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5830),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5830),
                             DatumOcenjivanja = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Komentar = "Vrlo dobra usluga",
                             Ocjena = 4,
@@ -790,9 +790,9 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 1,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4220),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4220),
-                            DatumOtkazivanja = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4220),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5850),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5850),
+                            DatumOtkazivanja = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5850),
                             KorisnikID = 1,
                             Razlog = "Promjena plana",
                             RezervacijaID = 0
@@ -800,9 +800,9 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 2,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4220),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4220),
-                            DatumOtkazivanja = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4220),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5850),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5850),
+                            DatumOtkazivanja = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5850),
                             KorisnikID = 2,
                             Razlog = "Kašnjenje voza",
                             RezervacijaID = 0
@@ -842,8 +842,8 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 1,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4240),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4240),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5870),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5870),
                             Naziv = "Porodični paket",
                             Opis = "Paket za porodice sa 20% popusta",
                             Popust = 20
@@ -851,8 +851,8 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 2,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4240),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4240),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5870),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5870),
                             Naziv = "Studentski paket",
                             Opis = "Paket za studente sa 15% popusta",
                             Popust = 15
@@ -894,8 +894,8 @@ namespace GBT.Migrations
                         {
                             ID = 1,
                             Adresa = "Ulica 1",
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4260),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4260),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5890),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5890),
                             KontaktTelefon = "123456789",
                             NazivPartnera = "Prevoznik A"
                         },
@@ -903,8 +903,8 @@ namespace GBT.Migrations
                         {
                             ID = 2,
                             Adresa = "Ulica 2",
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4260),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4260),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5890),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5890),
                             KontaktTelefon = "987654321",
                             NazivPartnera = "Prevoznik B"
                         });
@@ -947,8 +947,8 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 1,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4270),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4270),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5900),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5900),
                             PosiljaocID = 1,
                             PrimalacID = 2,
                             StatusPosiljkeID = 6
@@ -956,8 +956,8 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 2,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4270),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4270),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5910),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5910),
                             PosiljaocID = 2,
                             PrimalacID = 1,
                             StatusPosiljkeID = 7
@@ -999,20 +999,20 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 1,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4300),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4300),
-                            DatumKraja = new DateTime(2025, 3, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4290),
-                            DatumPocetka = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4290),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5930),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5930),
+                            DatumKraja = new DateTime(2024, 10, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5920),
+                            DatumPocetka = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5920),
                             Naziv = "Letnja akcija",
                             ProcenatPopusta = 30m
                         },
                         new
                         {
                             ID = 2,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4300),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4300),
-                            DatumKraja = new DateTime(2025, 4, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4300),
-                            DatumPocetka = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4300),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5930),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5930),
+                            DatumKraja = new DateTime(2024, 11, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5930),
+                            DatumPocetka = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5930),
                             Naziv = "Zimski popust",
                             ProcenatPopusta = 25m
                         });
@@ -1052,18 +1052,18 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 1,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4320),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4320),
-                            DatumOdrzavanja = new DateTime(2025, 3, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4320),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5950),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5950),
+                            DatumOdrzavanja = new DateTime(2024, 10, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5950),
                             Napomena = "Redovan servis",
                             VozID = 1
                         },
                         new
                         {
                             ID = 2,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4320),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4320),
-                            DatumOdrzavanja = new DateTime(2025, 4, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4320),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5950),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5950),
+                            DatumOdrzavanja = new DateTime(2024, 11, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5950),
                             Napomena = "Zimska priprema",
                             VozID = 2
                         });
@@ -1111,8 +1111,8 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 1,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4340),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4340),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5970),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5970),
                             DatumRecenzije = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Komentar = "Brz i udoban",
                             KorisnikID = 1,
@@ -1122,8 +1122,8 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 2,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4340),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4340),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5970),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5970),
                             DatumRecenzije = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Komentar = "Dobar, ali može bolje",
                             KorisnikID = 2,
@@ -1169,9 +1169,9 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 1,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4350),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4350),
-                            DatumReklamacije = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4350),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5990),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5990),
+                            DatumReklamacije = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5990),
                             KorisnikID = 1,
                             Opis = "Kasno uručenje",
                             Reseno = true
@@ -1179,9 +1179,9 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 2,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4360),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4360),
-                            DatumReklamacije = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4360),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5990),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5990),
+                            DatumReklamacije = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5990),
                             KorisnikID = 2,
                             Opis = "Oštećena pošiljka",
                             Reseno = false
@@ -1230,8 +1230,8 @@ namespace GBT.Migrations
                         {
                             ID = 1,
                             BrojSjedista = "A1",
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4370),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4370),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(6000),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(6010),
                             KorisnikID = 1,
                             RezervacijaID = 0,
                             VozID = 1
@@ -1240,8 +1240,8 @@ namespace GBT.Migrations
                         {
                             ID = 2,
                             BrojSjedista = "B5",
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4370),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4370),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(6010),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(6010),
                             KorisnikID = 2,
                             RezervacijaID = 0,
                             VozID = 2
@@ -1279,40 +1279,40 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 1,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3950),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3950),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5560),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5560),
                             GradID = 1,
                             Naziv = "Sarajevo Stanica"
                         },
                         new
                         {
                             ID = 2,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3950),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3950),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5560),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5560),
                             GradID = 2,
                             Naziv = "Zagreb Stanica"
                         },
                         new
                         {
                             ID = 3,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3960),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3960),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5570),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5570),
                             GradID = 3,
                             Naziv = "Beograd Stanica"
                         },
                         new
                         {
                             ID = 4,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3960),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3960),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5570),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5570),
                             GradID = 4,
                             Naziv = "Ljubljana Stanica"
                         },
                         new
                         {
                             ID = 5,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3960),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(3960),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5570),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5570),
                             GradID = 5,
                             Naziv = "Podgorica Stanica"
                         });
@@ -1357,8 +1357,8 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 1,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4100),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4100),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5710),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5710),
                             DatumStatusa = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             KorisnikID = 1,
                             PosiljkaID = 0,
@@ -1367,8 +1367,8 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 2,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4100),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4100),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5710),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5710),
                             DatumStatusa = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             KorisnikID = 1,
                             PosiljkaID = 0,
@@ -1527,9 +1527,9 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 1,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4040),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4040),
-                            DatumVoznje = new DateTime(2025, 2, 9, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5650),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5650),
+                            DatumVoznje = new DateTime(2024, 9, 25, 0, 0, 0, 0, DateTimeKind.Utc),
                             KrajVoznje = "12:00",
                             KrajnjaDestinacijaID = 2,
                             PocetakVoznje = "08:00",
@@ -1539,9 +1539,9 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 2,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4040),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4040),
-                            DatumVoznje = new DateTime(2025, 2, 9, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5650),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5660),
+                            DatumVoznje = new DateTime(2024, 9, 25, 0, 0, 0, 0, DateTimeKind.Utc),
                             KrajVoznje = "13:00",
                             KrajnjaDestinacijaID = 3,
                             PocetakVoznje = "09:00",
@@ -1551,9 +1551,9 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 3,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4040),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4040),
-                            DatumVoznje = new DateTime(2025, 2, 9, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5660),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5660),
+                            DatumVoznje = new DateTime(2024, 9, 25, 0, 0, 0, 0, DateTimeKind.Utc),
                             KrajVoznje = "14:00",
                             KrajnjaDestinacijaID = 4,
                             PocetakVoznje = "10:00",
@@ -1563,9 +1563,9 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 4,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4050),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4050),
-                            DatumVoznje = new DateTime(2025, 2, 9, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5660),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5660),
+                            DatumVoznje = new DateTime(2024, 9, 25, 0, 0, 0, 0, DateTimeKind.Utc),
                             KrajVoznje = "15:00",
                             KrajnjaDestinacijaID = 5,
                             PocetakVoznje = "11:00",
@@ -1575,9 +1575,9 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 5,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4050),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4050),
-                            DatumVoznje = new DateTime(2025, 2, 9, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5660),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(5660),
+                            DatumVoznje = new DateTime(2024, 9, 25, 0, 0, 0, 0, DateTimeKind.Utc),
                             KrajVoznje = "16:00",
                             KrajnjaDestinacijaID = 1,
                             PocetakVoznje = "12:00",
@@ -1619,18 +1619,18 @@ namespace GBT.Migrations
                         new
                         {
                             ID = 1,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4390),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4390),
-                            Datum = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4390),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(6020),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(6020),
+                            Datum = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(6020),
                             Grad = "Sarajevo",
                             Prognoza = "Oblacno"
                         },
                         new
                         {
                             ID = 2,
-                            DateCreated = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4390),
-                            DateModified = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4390),
-                            Datum = new DateTime(2025, 2, 9, 22, 27, 48, 130, DateTimeKind.Utc).AddTicks(4390),
+                            DateCreated = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(6030),
+                            DateModified = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(6030),
+                            Datum = new DateTime(2024, 9, 25, 20, 6, 2, 767, DateTimeKind.Utc).AddTicks(6030),
                             Grad = "Banja Luka",
                             Prognoza = "Suncano"
                         });

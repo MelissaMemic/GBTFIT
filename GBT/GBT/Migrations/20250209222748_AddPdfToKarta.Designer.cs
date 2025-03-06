@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MobitelShop.Data;
 
@@ -11,9 +12,11 @@ using MobitelShop.Data;
 namespace GBT.Migrations
 {
     [DbContext(typeof(MojDBContext))]
-    partial class MojDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250209222748_AddPdfToKarta")]
+    partial class AddPdfToKarta
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

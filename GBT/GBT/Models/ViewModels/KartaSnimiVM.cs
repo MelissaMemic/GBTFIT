@@ -15,6 +15,9 @@
         public bool Popust { get; set; }
         public int BrojPerona { get; set; }
         public double Cijena { get; set; }
+        public string? ImageData { get; set; }
+        public string? PdfData { get; set; }
+
     }
 }
 

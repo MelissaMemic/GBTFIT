@@ -21,6 +21,10 @@ namespace GBT.Models
 
         public double? Cijena { get; set; }
         public bool isPlaceno { get; set; }
+        public byte[]? Image { get; set; }
+        public byte[]? Pdf { get; set; }   
+
+
     }
     public enum Klasa
     {

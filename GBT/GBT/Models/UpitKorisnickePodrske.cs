@@ -11,5 +11,7 @@ namespace GBT.Models
         [ForeignKey("KorisnikID")]
         public Korisnik Korisnik { get; set; }
         public int KorisnikID { get; set; }
+        public string? ImagePath { get; set; } 
+
     }
 }

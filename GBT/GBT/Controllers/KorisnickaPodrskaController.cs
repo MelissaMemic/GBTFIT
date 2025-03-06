@@ -39,31 +39,41 @@ namespace GBT.Controllers
         }
 
         [HttpPost]
-        public ActionResult Snimi([FromBody] PorukaSnimiVM x)
+        public async Task<ActionResult> Snimi([FromForm] PorukaSnimiVM x, IFormFile? file)
         {
             UpitiKorisnickePodrske? noviUpit;
+
             if (x.ID == 0)
             {
                 noviUpit = new UpitiKorisnickePodrske
                 {
                     KorisnikID = x.KorisnikID,
-                    Sadrzaj=x.Sadrzaj,
-                    DatumUpita=DateTime.Now,
-                    Status=x.Status
+                    Sadrzaj = x.Sadrzaj,
+                    DatumUpita = DateTime.Now,
+                    Status = x.Status
+                };
 
-    };
+                if (file != null && file.Length > 0)
+                {
+                    var filePath = Path.Combine("Uploads", file.FileName); 
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+                    noviUpit.ImagePath = filePath; 
+                }
 
-                _dbContext.Add(noviUpit); 
-                _dbContext.SaveChanges();
+                _dbContext.Add(noviUpit);
+                await _dbContext.SaveChangesAsync();
             }
             else
             {
                 return BadRequest("pogresan ID");
             }
 
-
-            return Ok(noviUpit); 
+            return Ok(noviUpit);
         }
+
 
     }
 }

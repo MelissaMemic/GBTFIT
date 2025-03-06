@@ -6,6 +6,7 @@ using GBT.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MobitelShop.Data;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace GBT.Controllers
 {
@@ -93,12 +94,16 @@ namespace GBT.Controllers
                 novaKarta = new Karta
                 {
                     KorisnikID = x.KorisnikID,
-                    VoznjaID = x.PocetnaDestinacijaID, 
+                    VoznjaID = x.PocetnaDestinacijaID,
                     BrojPerona = x.BrojPerona,
                     KlasaVoznje = x.KlasaVoznje,
                     Obrok = x.Obrok,
                     Popust = x.Popust,
-                    Cijena = x.Cijena
+                    Cijena = x.Cijena,
+                   Image = !string.IsNullOrEmpty(x.ImageData) ? Convert.FromBase64String(x.ImageData.Split(',')[1]) : null,
+                    Pdf = !string.IsNullOrEmpty(x.PdfData) ? Convert.FromBase64String(x.PdfData.Split(',')[1]) : null
+
+
                 };
 
                 if (x.Popust)
@@ -106,17 +111,19 @@ namespace GBT.Controllers
                     novaKarta.Cijena -= 3;
                 }
 
+               
+
                 _dbContext.Add(novaKarta);
-                _dbContext.SaveChanges(); 
+                _dbContext.SaveChanges();
             }
             else
             {
                 return BadRequest("pogresan ID");
             }
 
-
             return Ok(novaKarta);
         }
+
 
     }
 }
